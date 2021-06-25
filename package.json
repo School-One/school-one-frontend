@@ -1,6 +1,7 @@
 {
   "name": "school-one-frontend",
   "version": "0.1.0",
+  "homepage": "https://school-one.github.io/school-one-frontend",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
