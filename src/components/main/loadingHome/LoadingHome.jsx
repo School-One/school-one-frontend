@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
-
-import styles from './LoadingHome.module.css';
-
-import $ from "jquery";
+import $ from 'jquery';
 
 export default function LoadingHome() {
 
     useEffect(() => {
 
         $(function(){
-            $(".LoadingHome_loader__wrapper__2V3wF").fadeOut("slow");
+            $(".loader__wrapper").fadeOut("slow");
         });
 
     }, []);
@@ -17,9 +14,9 @@ export default function LoadingHome() {
     return (
         <>
 
-            <div className={styles.loader__wrapper}>
-                <span className={styles.loader}>
-                    <span className={styles.loader__inner}></span>
+            <div className="loader__wrapper" >
+                <span className="loader" >
+                    <span className="loader__inner" ></span>
                 </span>
             </div>
         </>
