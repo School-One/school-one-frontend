@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Poppins:wght@700&display=swap');
 
 .body {
+    font-family: 'Poppins', sans-serif !important;
     min-height: 100vh;
     width: 100%;
     display: grid;

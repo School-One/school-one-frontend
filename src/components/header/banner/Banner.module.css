@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
+
 .textxwhite{
-	color: white !important;
+	color: white ;
+	font-weight: bold;
 }
 
 section
@@ -7,9 +10,11 @@ section
 	padding: 100px;
 }
 
-
-
 /*h Hexagon h*/
+
+.textBx{
+	font-family: 'Inconsolata', monospace !important;
+}
 
 .container
 {
@@ -188,7 +193,26 @@ section
 	font-weight: 500;
 }
 
+.btn__border{
+	position: relative;
+	background-color: transparent;
+	display: inline-block;
+	color: #fff;
+	margin-top: 20px;
+	padding: 10px 30px;
+	font-size: 18px;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-weight: 500;
+	border: 2px solid #03a9f4;
+	transition: background-color 1.5s;
+}
 
+.btn__border:hover{
+	color: #03a9f4;
+	background-color: white;
+}
 
 /*Header*/
 
