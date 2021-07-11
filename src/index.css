@@ -12,7 +12,7 @@ html {
 }
 
 body{
-  font-family: 'Inconsolata', monospace !important;
+  font-family: 'Inconsolata', monospace;
 }
 
 
@@ -157,6 +157,14 @@ body{
     height: 0%;
   }
 }
+
+.sidebar.active ~ .home_content {
+        
+  width: calc(100% - 240px);
+  left: 240px;
+  
+}
+
 /*footer*/
 
 .circle {

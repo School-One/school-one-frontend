@@ -22,7 +22,7 @@ export default function LoginScreen(props) {
 
     const { loading, error, userInfo } = user;
 
-    const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
+    const redirect = props.location.search ? props.location.search.split('=')[1] : '/student';
 
     const { username, password, onChange  } = useForm({
         username: '',
