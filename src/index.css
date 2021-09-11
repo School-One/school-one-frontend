@@ -176,3 +176,15 @@ body{
   border-radius: 50%;
   display: inline-block;
 }
+
+/*Login*/
+
+.side {
+  background: url(./img/bk.png) no-repeat;
+  background-size: 100% 102%;
+}
+
+.sideimage {
+  width: 80%;
+  max-width: 80%;
+}

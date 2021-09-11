@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 //
 import styles from './Home.module.css';
@@ -10,7 +11,16 @@ import About from '../../components/main/about/About';
 import Wave from '../../components/main/svg/Wave';
 import Footer from '../../components/footer/Footer';
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
+    
+    const userSignin = useSelector((state) => state.userSignin);
+
+    const { userInfo } = userSignin;
+
+    if(userInfo){
+        props.history.push('/student');
+    }
+
     return (
         <>          
             <header>

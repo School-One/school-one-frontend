@@ -1,4 +1,5 @@
-import Axios from 'axios'
+import Axios from 'axios';
+
 import {
     USER_SIGNIN_REQUEST,
     USER_SIGNIN_SUCCESS,
@@ -11,7 +12,7 @@ export const login = (username, password) => async(dispatch) =>{
     dispatch({
         type: USER_SIGNIN_REQUEST,
         payload: {username, password}
-    })
+    });
 
     try {
         

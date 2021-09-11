@@ -5,7 +5,7 @@ import {
     COURSE_GET_ALUMN_FAIL
  } from '../constants/courseConstants';
 
-export const getCourseByAlumn = (userId) => async (dispatch) =>{
+export const getCourseByAlumn = (userId) => async (dispatch, getState) =>{
 
     dispatch({
         type: COURSE_GET_ALUMN_REQUEST,
@@ -14,8 +14,15 @@ export const getCourseByAlumn = (userId) => async (dispatch) =>{
 
     try {
 
-        
-        const { data } = await Axios.get(`http://localhost:4000/api/course/student/${userId}`);
+        const {
+            userSignin: { userInfo },
+        } = getState();
+
+        const { data } = await Axios.get(`http://localhost:4000/api/course/student/${userId}`, {
+            headers: {
+                Authorization: userInfo.token,
+            },
+        });
 
         dispatch({
             type: COURSE_GET_ALUMN_SUCCESS,
@@ -25,7 +32,9 @@ export const getCourseByAlumn = (userId) => async (dispatch) =>{
     } catch (error) {
         dispatch({
             type: COURSE_GET_ALUMN_FAIL,
-            payload: error
+            payload: error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
         });
     }
 

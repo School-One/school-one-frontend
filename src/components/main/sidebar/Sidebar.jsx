@@ -18,9 +18,8 @@ const SidebarStyled = styled.div`
         width: 78px;
         background-color: #1B1B55;
         padding: 6px 14px;
-        z-index: 99;
         transition: all 0.5s ease;
-        
+        z-index: 99;
     }
     .sidebar.active{
         width: 240px;
@@ -263,11 +262,11 @@ export default function Sidebar(props) {
                 </div>
                 <ul className="nav_list">
                     <li>
-                        <Link to="#" className="aa" >
-                            <i className="bx bx-user"></i>
-                            <span className="links_name">User</span>
+                        <Link to="/" className="aa" >
+                            <i className='bx bx-home'></i>
+                            <span className="links_name">Home</span>
                         </Link>
-                        <span className="tooltop">User</span>
+                        <span className="tooltop">Home</span>
                     </li>
                     <li>
                         <Link to="#" className="aa" >
@@ -284,7 +283,7 @@ export default function Sidebar(props) {
                         <span className="tooltop">Archivos</span>
                     </li>
                     <li>
-                        <Link to="#" className="aa" >
+                        <Link to="/calendar" className="aa" >
                             <i className='bx bx-calendar' ></i>
                             <span className="links_name">Calendario</span>
                         </Link>
