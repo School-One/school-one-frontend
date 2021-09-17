@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Profile from '../../../img/Perfil.png';
+import Profile from '../../img/Perfil.png';
 
 import styled from 'styled-components';
-
 //REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { signout } from '../../../redux/actions/userActions';
+import { signout } from '../../redux/actions/userActions';
 
 const SidebarStyled = styled.div`
     .sidebar {
@@ -18,8 +17,9 @@ const SidebarStyled = styled.div`
         width: 78px;
         background-color: #1B1B55;
         padding: 6px 14px;
-        transition: all 0.5s ease;
         z-index: 99;
+        transition: all 0.5s ease;
+        
     }
     .sidebar.active{
         width: 240px;
@@ -56,6 +56,8 @@ const SidebarStyled = styled.div`
     }
     .sidebar.active ~ .home_content {
         width: calc(100% - 240px);
+        overflow-y: scroll;
+        scroll-behavior: smooth;
         left: 240px;
     }
     .logo-content {
@@ -177,16 +179,13 @@ const SidebarStyled = styled.div`
                     object-fit: cover;
                     border-radius: 12px;
                 }
-
                 .name_user {
                     margin-left: 10px;
                 }
-
                 .name {
                     font-size: 15px;
                     font-weight: 400;
                 }
-
                 .surname {
                     font-size: 12px;
                 }
@@ -213,8 +212,10 @@ const SidebarStyled = styled.div`
     overflow: hidden;
     .home_content {
         position: absolute;
-        height: 100%;
+        height: 100vh;
         width: calc(100% - 78px);
+        overflow-y: scroll;
+        scroll-behavior: smooth;
         left: 78px;
         transition: all 0.5s ease;
     }
@@ -224,7 +225,7 @@ const SidebarStyled = styled.div`
     }
 `;
 
-export default function Sidebar(props) {
+export default function StartScreen(props) {
 
     const userSignin = useSelector((state) => state.userSignin);
 
@@ -262,11 +263,11 @@ export default function Sidebar(props) {
                 </div>
                 <ul className="nav_list">
                     <li>
-                        <Link to="/" className="aa" >
-                            <i className='bx bx-home'></i>
-                            <span className="links_name">Home</span>
+                        <Link to="/student" className="aa" >
+                            <i className="bx bx-user"></i>
+                            <span className="links_name">User</span>
                         </Link>
-                        <span className="tooltop">Home</span>
+                        <span className="tooltop">User</span>
                     </li>
                     <li>
                         <Link to="#" className="aa" >
@@ -283,7 +284,7 @@ export default function Sidebar(props) {
                         <span className="tooltop">Archivos</span>
                     </li>
                     <li>
-                        <Link to="/calendar" className="aa" >
+                        <Link to="#" className="aa" >
                             <i className='bx bx-calendar' ></i>
                             <span className="links_name">Calendario</span>
                         </Link>
@@ -329,7 +330,7 @@ export default function Sidebar(props) {
                 </div>
             </div>
             <div className="home_content">
-                {props.children} 
+                {props.children}
             </div>
         </SidebarStyled>
     )

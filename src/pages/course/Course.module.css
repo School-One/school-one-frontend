@@ -5,6 +5,9 @@
     padding-top: 25px;
     padding-bottom: 25px;
 }
+.container {
+    display: flex;
+}
 
 .courseName {
     font-family: 'Poppins', sans-serif;
@@ -15,8 +18,10 @@
 .mainPanel {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    margin: 10px;
     justify-content: center;
+    
 }
 
 .courseNameContainer {
@@ -35,7 +40,7 @@
 .courseDescription {
     font-family: 'Poppins', sans-serif;
     font-weight: lighter;
-    padding-left: 40px;
+    padding-left: 20px;
     padding-top: 20px;
 }
 
@@ -43,6 +48,7 @@
     padding: 25px;
     text-align: center;
     min-width: 890px;
+
 }
 
 .cardTitle {
@@ -58,6 +64,7 @@
     justify-content: space-between;
     padding: 15px;
     margin-bottom: 15px;
+    border-radius: 10px;
 }
 
 .HomeworkRowTitle {
@@ -168,6 +175,7 @@
 @media (max-width: 900px) {
     .mainPanel {
         display: flex;
+        flex-wrap: wrap;
     }
     .courseCard {
         margin: 0;

@@ -1,11 +1,15 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { userSigninReducer } from './redux/reducers/userReducers';
-import { courseGetAllReducer } from './redux/reducers/courseReducer';
+import { coursesGetAllReducer, getCourseReducer } from './redux/reducers/courseReducer';
+import { teacherGetCoursesReducer } from './redux/reducers/teacherReducer';
+
 //Reducers
 const reducer = combineReducers({
     userSignin: userSigninReducer,
-    coursesList: courseGetAllReducer,
+    coursesList: coursesGetAllReducer,
+    courseDetails: getCourseReducer,
+    coursesByTeacher: teacherGetCoursesReducer
 });
 // const reducer = (state, action) =>{
 //     return { products: 'hola' }

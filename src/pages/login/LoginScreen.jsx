@@ -115,6 +115,17 @@ const LoginStyled = styled.div`
         text-decoration: none !important;
         color: #888;
     }
+    @media only screen and (max-width: 768px) {
+        .side {
+            display: none !important;
+            .sideimage {
+                display: none;
+            }
+        }
+        .body-login {
+            display: block;
+        }
+    }
 `;
 
 export default function LoginScreen(props) {
@@ -124,8 +135,8 @@ export default function LoginScreen(props) {
     const user = useSelector(state => state.userSignin);
 
     const { loading, error, userInfo } = user;
-
-    const redirect = props.location.search ? props.location.search.split('=')[1] : '/student';
+    //Solucionar
+    const redirect = userInfo.rol === 'Profesor' ? '/teacher' : '/student';
 
     const { username, password, onChange  } = useForm({
         username: '',
@@ -148,7 +159,7 @@ export default function LoginScreen(props) {
     return (
         <LoginStyled>
             <div className="body-login">
-                <section className="side">
+                <section className="side" >
                     <img src={ImageSVG} alt="a" className="sideimage" />
                 </section>
                 
@@ -168,6 +179,7 @@ export default function LoginScreen(props) {
                                     value={username}
                                     onChange={(e) => onChange(e.target.value, 'username')}
                                     className="input_login"
+                                    autoComplete="true"
                                 />
                                 <i className="fa fa-user" ></i>
                             </div>
@@ -178,6 +190,7 @@ export default function LoginScreen(props) {
                                     value={password}
                                     onChange={(e) => onChange(e.target.value, 'password')}
                                     className="input_login"
+                                    autoComplete="true"
                                 />
                                 <i className="fa fa-lock"></i>
                             </div>

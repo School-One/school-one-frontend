@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Sidebar from '../../../components/main/sidebar/Sidebar';
 
 import ImageExample from '../../../assets/img/Img.png';
 
@@ -11,7 +10,8 @@ import MessageBox from '../../../components/main/messageBox/MessageBox';
 
 //REDUX
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseByAlumn } from '../../../redux/actions/courseActions';
+import { getCoursesByAlumn } from '../../../redux/actions/courseActions';
+import StartScreen from '../../Start/StartScreen';
 
 const HomeStyled = styled.div`
     .title_h2 {
@@ -74,12 +74,12 @@ export default function HomeStudent() {
 
     useEffect(() => {
         
-        dispatch(getCourseByAlumn(userInfo._id));
+        dispatch(getCoursesByAlumn(userInfo._id));
 
     }, [dispatch, userInfo._id]);
 
     return (
-        <Sidebar >
+        <StartScreen>
             <HomeStyled>
                 <div className="container-fluid mt-3">
                     <div className="row">
@@ -97,7 +97,7 @@ export default function HomeStudent() {
                                             <div className="card c-bottom">
                                                 <img src={ImageExample} className="card-img-top" alt="..." />
                                                 <div className="card-body">
-                                                    <Link to="#" className="card-title">
+                                                    <Link to={`course/${course._id}`} className="card-title">
                                                         <h5>{course.name}</h5>
                                                     </Link>
                                                     <p className="card_mini">{course.grade_section}</p>
@@ -127,6 +127,6 @@ export default function HomeStudent() {
                     </div>
                 </div>
             </HomeStyled>
-        </Sidebar>      
+        </StartScreen>      
     )
 }
