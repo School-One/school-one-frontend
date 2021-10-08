@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import HomeScreen from './pages/home/HomeScreen';
 import LoginScreen from './pages/login/LoginScreen';
 import HomeStudent from './pages/student/home/HomeStudent';
+import Settings from './pages/student/settings/Settings';
 import CourseScreen from './pages/course/CourseScreen';
 import StartScreen from './pages/Start/StartScreen';
 import TeacherScreen from './pages/teacher/home/TeacherScreen';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/start" component={StartScreen} />
         <Switch>
           <Route path="/student" component={HomeStudent} />
+          <Route path="/settings" component={Settings} />
           <Route path="/course/:courseid" component={CourseScreen} />
           <Route path="/teacher" component={TeacherScreen} />
         </Switch>

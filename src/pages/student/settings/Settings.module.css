@@ -1,0 +1,123 @@
+.SettingsContainer {
+    background-color: whitesmoke;
+    padding: 25px;
+    margin: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.SettingsRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.SettingsPhotographRow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.SettingsTitle {
+    color: #843bc7;
+    margin-bottom: 30px;
+    align-self: center;
+}
+
+.SettingsLabel {
+    background-color: #843bc7;
+    font-size: 1.2rem;
+    color: white;
+    font-size: 1.1em;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px 0px 0px 30px;
+}
+
+.SettingsInput {
+    border: none;
+    outline: none;
+    border-radius: 0px 30px 30px 0px;
+    font-size: 1.1em;
+    padding: 10px;
+    border: 2px solid #a14af3;
+    width: 40%;
+}
+
+.SettingsInput:focus {
+    border: 2px solid #843bc7;
+}
+
+.SettingsPhotograph {
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+    cursor: pointer;
+    border: 2px solid #843bc7;
+}
+
+.SettingsFileButton {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #843bc7;
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex !important;
+    cursor: pointer;
+    transition-property: all;
+    transition-timing-function: ease;
+    transition-duration: 200ms;
+}
+
+.SettingsFileButton:hover {
+    background-color: #843bc7;
+    color: white;
+}
+
+.SettingsFileButton:hover i {
+    color: white !important;
+}
+
+.SettingsFileButton input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    opacity: 0.5;
+    outline: none;
+    cursor: inherit;
+}
+
+.SettingsFileButton i {
+    align-self: center;
+}
+
+.SettingsUpdateButton {
+    display: flex;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    transition-property: all;
+    transition-timing-function: ease;
+    transition-duration: 300ms;
+    background-color: #843bc7;
+    border: none;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.SettingsUpdateButton:hover {
+    background-color: #5f2a90;
+}
