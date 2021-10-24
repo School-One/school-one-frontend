@@ -188,3 +188,30 @@ body{
   width: 80%;
   max-width: 80%;
 }
+
+.img-fluid {
+  width: auto;
+}
+
+.footer-section__title {
+  color: #ce0cc0;
+}
+
+.footer-section__link {
+  color: white;
+  text-decoration: none;
+  transition-property: color;
+  transition-timing-function: ease;
+  transition-duration: 300ms;
+}
+
+.footer-section__link:hover {
+  color: #ce0cc0;
+}
+
+.footer-section__card {
+  border: 1px solid #ce0cc0;
+  padding: 1.4rem;
+  border-radius: 15px;
+  background-color: #000000;
+}
