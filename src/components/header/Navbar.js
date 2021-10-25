@@ -1,21 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/auth';
 
 //CSS
 import './navbar.css';
 
-
-//REDUX
-import { signout } from '../../redux/actions/userActions';
-
 export default function Navbar() {
 
-  const dispatch = useDispatch();
-
-  const user = useSelector(state => state.userSignin);
-
-  const { userInfo } = user;
+  const { user, logout } = useContext(AuthContext);
 
   function toggleMenu()
 	{
@@ -38,7 +30,7 @@ export default function Navbar() {
 
   const signoutHandler = () =>{
 
-    dispatch(signout());
+    logout();
     window.location.reload();
 
   }
@@ -49,10 +41,10 @@ export default function Navbar() {
           <div className="toggle" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/img/menu.png'})` }} onClick={toggleMenu}></div>
           <ul className="menu">
             {
-              userInfo ? 
+              user ? 
               (
                 <>
-                  <li><Link to="/profile" className="a">{userInfo.username}</Link></li>
+                  <li><Link to="/profile" className="a">a</Link></li>
                   <li>
                     <Link to="#signout" className="a" onClick={signoutHandler} >Sign Out</Link>
                   </li>

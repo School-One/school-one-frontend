@@ -1,6 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/auth';
 //
 import styles from './Home.module.css';
 //
@@ -13,11 +12,9 @@ import Footer from '../../components/footer/Footer';
 
 export default function HomeScreen(props) {
     
-    const userSignin = useSelector((state) => state.userSignin);
+    const { user } = useContext(AuthContext);
 
-    const { userInfo } = userSignin;
-
-    if(userInfo){
+    if(user){
         props.history.push('/student');
     }
 

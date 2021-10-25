@@ -1,6 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { AuthContext } from '../../../context/auth';
+
+//Graphql
+import { useQuery } from '@apollo/react-hooks';
+import { GET_ALL_COURSES } from '../../../graphql/query';
 
 import ImageExample from '../../../assets/img/Img.png';
 
@@ -8,9 +13,6 @@ import ImageExample from '../../../assets/img/Img.png';
 import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
 import MessageBox from '../../../components/main/messageBox/MessageBox';
 
-//REDUX
-import { useDispatch, useSelector } from 'react-redux';
-import { getCoursesByAlumn } from '../../../redux/actions/courseActions';
 import StartScreen from '../../Start/StartScreen';
 
 const HomeStyled = styled.div`
@@ -60,23 +62,19 @@ const HomeStyled = styled.div`
     }
 `;
 
-export default function HomeStudent() {
+export default function HomeStudent(props) {
 
-    const dispatch = useDispatch();
-    
-    const user = useSelector((state) => state.userSignin);
+    const { user } = useContext(AuthContext);
 
-    const { userInfo } = user;
+    if(!user) {
+        props.history.push('/');
+    }
 
-    const coursesList = useSelector((state) => state.coursesList);
-
-    const { error, loading, courses } = coursesList;
-
-    useEffect(() => {
-        
-        dispatch(getCoursesByAlumn(userInfo._id));
-
-    }, [dispatch, userInfo._id]);
+    const { loading, error, data } = useQuery(GET_ALL_COURSES, {
+        variables: {
+            userId: user.id
+        }
+    });
 
     return (
         <StartScreen>
@@ -92,16 +90,16 @@ export default function HomeStudent() {
 
                                { loading ? (<LoadingBox />) : error ? (<MessageBox variant="danger">{error}</MessageBox>) : 
                                (   
-                                    courses && courses.map(course => (
-                                        <div key={course._id} className="col">
+                                    data && data.getCourses.map(course => (
+                                        <div key={course.id} className="col">
                                             <div className="card c-bottom">
                                                 <img src={ImageExample} className="card-img-top" alt="..." />
                                                 <div className="card-body">
-                                                    <Link to={`course/${course._id}`} className="card-title">
+                                                    <Link to={`course/${course.id}`} className="card-title">
                                                         <h5>{course.name}</h5>
                                                     </Link>
                                                     <p className="card_mini">{course.grade_section}</p>
-                                                    <p className="card_teacher"><i className="fas fa-chalkboard-teacher"></i> {course.teacher.name} {course.teacher.lastname}</p>
+                                                    <p className="card_teacher"><i className="fas fa-chalkboard-teacher"></i>{course.teacher_id}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Profile from '../../img/Perfil.png';
+import { AuthContext } from '../../context/auth';
 
 import styled from 'styled-components';
-//REDUX
-import { useDispatch, useSelector } from 'react-redux';
-import { signout } from '../../redux/actions/userActions';
 
 const SidebarStyled = styled.div`
     .sidebar {
@@ -227,11 +225,7 @@ const SidebarStyled = styled.div`
 
 export default function StartScreen(props) {
 
-    const userSignin = useSelector((state) => state.userSignin);
-
-    const { userInfo } = userSignin;
-
-    const dispatch = useDispatch();
+    const { logout, user } = useContext(AuthContext);
 
     useEffect(() => {
         
@@ -244,9 +238,9 @@ export default function StartScreen(props) {
 
     }, []);
 
-    const logout = () => {
+    const logoutHandle = () => {
 
-        dispatch(signout());
+        logout();
         window.location.replace('/');
 
     }
@@ -263,54 +257,41 @@ export default function StartScreen(props) {
                 </div>
                 <ul className="nav_list">
                     <li>
-                        <Link to="/student" className="aa" >
+                        <Link to="#" className="aa" >
                             <i className="bx bx-user"></i>
-                            <span className="links_name">User</span>
+                            <span className="links_name">Cuenta</span>
                         </Link>
-                        <span className="tooltop">User</span>
+                        <span className="tooltop">Cuenta</span>
                     </li>
                     <li>
                         <Link to="#" className="aa" >
-                            <i className='bx bxl-zoom' ></i>
-                            <span className="links_name">Clase</span>
+                            <i className='bx bxs-book-content'></i>
+                            <span className="links_name">Cursos</span>
                         </Link>
-                        <span className="tooltop">Clase</span>
+                        <span className="tooltop">Cursos</span>
                     </li>
                     <li>
                         <Link to="#" className="aa" >
-                            <i className='bx bxs-archive' ></i>
-                            <span className="links_name">Archivos</span>
-                        </Link>
-                        <span className="tooltop">Archivos</span>
-                    </li>
-                    <li>
-                        <Link to="#" className="aa" >
-                            <i className='bx bx-calendar' ></i>
+                            <i className='bx bxs-calendar' ></i>
                             <span className="links_name">Calendario</span>
                         </Link>
-                        <span className="tooltop">Archivos</span>
+                        <span className="tooltop">Calendario</span>
                     </li>
                     <li>
                         <Link to="#" className="aa" >
-                            <i className='bx bxs-book-alt' ></i>
-                            <span className="links_name">Calificaciones</span>
+                            <i className='bx bx-history' ></i>
+                            <span className="links_name">Recordatorio</span>
                         </Link>
-                        <span className="tooltop">Calificaciones</span>
+                        <span className="tooltop">Recordatorio</span>
                     </li>
                     <li>
                         <Link to="#" className="aa" >
-                            <i className='bx bx-conversation'></i>
-                            <span className="links_name">Foro</span>
+                            <i className='bx bx-help-circle' ></i>
+                            <span className="links_name">Ayuda</span>
                         </Link>
-                        <span className="tooltop">Foro</span>
+                        <span className="tooltop">Ayuda</span>
                     </li>
-                    <li>
-                        <Link to="#" className="aa" >
-                            <i className='bx bx-brightness'></i>
-                            <span className="links_name">Configuración</span>
-                        </Link>
-                        <span className="tooltop">Configuración</span>
-                    </li>
+                   
                 </ul>
                 <div className="profile_content">
                     <div className="profile">
@@ -318,14 +299,18 @@ export default function StartScreen(props) {
                             <img src={Profile} alt="img" />
                             <div className="name_user">
                                 <div className="name">
-                                    {userInfo.name}
+                                    {
+                                        user.name
+                                    }
                                 </div>
                                 <div className="surname">
-                                    {userInfo.lastname}
+                                    {
+                                        user.lastname
+                                    }
                                 </div>
                             </div>
                         </div>
-                        <i className="bx bx-log-out" id="log_out" onClick={logout} ></i>
+                        <i className="bx bx-log-out" id="log_out" onClick={logoutHandle} ></i>
                     </div>
                 </div>
             </div>

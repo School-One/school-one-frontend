@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useContext, useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useMutation } from '@apollo/react-hooks';
+import { LOGIN_USER } from '../../graphql/mutation';
+import { AuthContext } from '../../context/auth';
 
 //COMPONENTS
 import LoadingBox from '../../components/main/loadingBox/LoadingBox';
 import MessageBox from '../../components/main/messageBox/MessageBox';
 import ImageSVG from '../../img/img.svg';
 
-//REDUX
-import { login } from '../../redux/actions/userActions';
 
 const LoginStyled = styled.div`
     .body-login {
@@ -69,6 +69,12 @@ const LoginStyled = styled.div`
         width: 100%;
         position: relative;
         margin-bottom: 24px;
+        text-align: center;
+    }
+    .form_control_links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
         text-align: center;
     }
     .input_login,
@@ -130,31 +136,33 @@ const LoginStyled = styled.div`
 
 export default function LoginScreen(props) {
 
-    const dispatch = useDispatch();
+    const { login } = useContext(AuthContext);
 
-    const user = useSelector(state => state.userSignin);
+    const [errors, setErrors] = useState(null);
 
-    const { loading, error, userInfo } = user;
-    //Solucionar
-    const redirect = userInfo.rol === 'Profesor' ? '/teacher' : '/student';
-
-    const { username, password, onChange  } = useForm({
-        username: '',
+    const { email, password, onChange  } = useForm({
+        email: '',
         password: ''
+    });
+
+    const [ loginUser, { loading } ] = useMutation(LOGIN_USER, {
+        update(_, {data: {login: userData}}){
+            login(userData);
+            props.history.push('/student');
+        },
+        onError(err){
+            setErrors(err&&err.graphQLErrors[0]?err.graphQLErrors[0].extensions.exception.errors:{});
+        },
+        variables: {
+            email,
+            password
+        }
     });
 
     const submitHandler = (e) =>{
         e.preventDefault();
-        dispatch(login(username, password));
+        loginUser();
     }
-
-    useEffect(() => {
-        
-        if(userInfo){
-            props.history.push(redirect);
-        }
-
-    }, [props.history, redirect, userInfo])
 
     return (
         <LoginStyled>
@@ -165,10 +173,12 @@ export default function LoginScreen(props) {
                 
                 <section className="main">
                     <div className="loginxcontainer">
-                        <p className="title">Welcome back</p>
+                        <p className="title">
+                            Bienvenido de vuelta
+                        </p>
                         <div className="separator" />
                         {
-                            loading ? (<LoadingBox></LoadingBox>) : error ? (<MessageBox variant="danger">{error}</MessageBox>) : (<><p className="welcomexmessage" >Welcome to our E-learning :D</p></>)
+                            loading ? (<LoadingBox></LoadingBox>) : errors ? (<MessageBox variant="danger">{errors.general}</MessageBox>) : (<><p className="welcomexmessage" >Welcome to our E-learning :D</p></>)
                         }
                         
                         <form className="loginxform" onSubmit={submitHandler}>
@@ -176,8 +186,8 @@ export default function LoginScreen(props) {
                                 <input 
                                     type="text" 
                                     placeholder="Username" 
-                                    value={username}
-                                    onChange={(e) => onChange(e.target.value, 'username')}
+                                    value={email}
+                                    onChange={(e) => onChange(e.target.value, 'email')}
                                     className="input_login"
                                     autoComplete="true"
                                 />
@@ -196,8 +206,10 @@ export default function LoginScreen(props) {
                             </div>
                             <button className="button submit">Login</button>
 
-                            <div className="formxcontrol">
+                            <div className="form_control_links">
                                 <Link to="/" className="comeback" >Regresar</Link>
+                                |
+                                <Link to="/login-teacher" className="comeback">Soy profesor</Link>
                             </div>
                         </form>
                     </div>
