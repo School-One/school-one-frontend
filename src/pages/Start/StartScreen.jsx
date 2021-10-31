@@ -67,7 +67,7 @@ const SidebarStyled = styled.div`
             align-items: center;
             opacity: 0;
             pointer-events: none;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
             .logo_name {
                 font-size: 20px;
                 font-weight: 600;

@@ -37,7 +37,7 @@ export default function Navbar() {
 
     return (
         <>
-          <Link to="/" className="logo">Academy</Link>
+          <Link to="/" className="logo">School One</Link>
           <div className="toggle" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/img/menu.png'})` }} onClick={toggleMenu}></div>
           <ul className="menu">
             {
