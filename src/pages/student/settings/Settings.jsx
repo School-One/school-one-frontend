@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Settings.module.css";
 import DefaultPhotograph from "./default_photograph.png";
 import MaterialIcon from "material-icons-react";
