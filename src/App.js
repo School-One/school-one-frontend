@@ -8,8 +8,6 @@ import AuthRoute from './util/AuthRoute';
 import HomeScreen from './pages/home/HomeScreen';
 import LoginScreen from './pages/login/LoginScreen';
 import HomeStudent from './pages/student/home/HomeStudent';
-import Settings from './pages/student/settings/Settings';
-import CourseScreen from './pages/student/Navbar/CourseScreen';
 import StartScreen from './pages/Start/StartScreen';
 import TeacherScreen from './pages/teacher/home/TeacherScreen';
 

@@ -82,6 +82,7 @@ export default function Content() {
                         <img
                             src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor1image/1622463604/1.jpg"
                             className={styles.about__cardImage}
+                            alt=""
                         />
                         <div className={styles.about__cardText}>
                             <h2>Don C. Beltrán</h2>
@@ -94,6 +95,7 @@ export default function Content() {
                         <img
                             src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor2image/1622463604/2.jpg"
                             className={styles.about__cardImage}
+                            alt=""
                         />
                         <div className={styles.about__cardText}>
                             <h2>Doña Rosa Delgado</h2>
@@ -106,6 +108,7 @@ export default function Content() {
                         <img
                             src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor3image/1622463604/3.jpg"
                             className={styles.about__cardImage}
+                            alt=""
                         />
                         <div className={styles.about__cardText}>
                             <h2>Carlos Beltrán</h2>
