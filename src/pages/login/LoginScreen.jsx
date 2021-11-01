@@ -1,20 +1,19 @@
-import React, { useContext, useState } from 'react';
-import { useForm } from '../../hooks/useForm';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useMutation } from '@apollo/react-hooks';
-import { LOGIN_USER } from '../../graphql/mutation';
-import { AuthContext } from '../../context/auth';
+import React, { useContext, useState } from "react";
+import { useForm } from "../../hooks/useForm";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useMutation } from "@apollo/react-hooks";
+import { LOGIN_USER } from "../../graphql/mutation";
+import { AuthContext } from "../../context/auth";
 
 //COMPONENTS
-import LoadingBox from '../../components/main/loadingBox/LoadingBox';
-import MessageBox from '../../components/main/messageBox/MessageBox';
-import ImageSVG from '../../img/img.svg';
-
+import LoadingBox from "../../components/main/loadingBox/LoadingBox";
+import MessageBox from "../../components/main/messageBox/MessageBox";
+import ImageSVG from "../../img/img.svg";
 
 const LoginStyled = styled.div`
     .body-login {
-        font-family: 'Poppins', sans-serif !important;
+        font-family: "Poppins", sans-serif !important;
         min-height: 100vh;
         width: 100%;
         display: grid;
@@ -97,7 +96,7 @@ const LoginStyled = styled.div`
         top: 50%;
         transform: translateY(-50%);
         color: #888;
-        transition: color   0.4s;
+        transition: color 0.4s;
     }
     .input_login:focus ~ i {
         color: #843bc7;
@@ -116,7 +115,7 @@ const LoginStyled = styled.div`
     .button.submit:hover {
         opacity: 0.9;
     }
-    .comeback{
+    .comeback {
         align-items: center;
         text-decoration: none !important;
         color: #888;
@@ -135,70 +134,85 @@ const LoginStyled = styled.div`
 `;
 
 export default function LoginScreen(props) {
-
     const { login } = useContext(AuthContext);
 
     const [errors, setErrors] = useState(null);
 
-    const { email, password, onChange  } = useForm({
-        email: '',
-        password: ''
+    const { email, password, onChange } = useForm({
+        email: "",
+        password: "",
     });
 
-    const [ loginUser, { loading } ] = useMutation(LOGIN_USER, {
-        update(_, {data: {login: userData}}){
+    const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+        update(_, { data: { login: userData } }) {
             login(userData);
-            props.history.push('/student');
+            props.history.push("/student");
         },
-        onError(err){
-            setErrors(err&&err.graphQLErrors[0]?err.graphQLErrors[0].extensions.exception.errors:{});
+        onError(err) {
+            setErrors(
+                err && err.graphQLErrors[0]
+                    ? err.graphQLErrors[0].extensions.exception.errors
+                    : {}
+            );
         },
         variables: {
             email,
-            password
-        }
+            password,
+        },
     });
 
-    const submitHandler = (e) =>{
+    const submitHandler = (e) => {
         e.preventDefault();
         loginUser();
-    }
+    };
 
     return (
         <LoginStyled>
             <div className="body-login">
-                <section className="side" >
+                <section className="side">
                     <img src={ImageSVG} alt="a" className="sideimage" />
                 </section>
-                
+
                 <section className="main">
                     <div className="loginxcontainer">
-                        <p className="title">
-                            Bienvenido de vuelta
-                        </p>
+                        <p className="title">Bienvenido de vuelta</p>
                         <div className="separator" />
-                        {
-                            loading ? (<LoadingBox></LoadingBox>) : errors ? (<MessageBox variant="danger">{errors.general}</MessageBox>) : (<><p className="welcomexmessage" >Welcome to our E-learning :D</p></>)
-                        }
-                        
+                        {loading ? (
+                            <LoadingBox></LoadingBox>
+                        ) : errors ? (
+                            <MessageBox variant="danger">
+                                {errors.general}
+                            </MessageBox>
+                        ) : (
+                            <>
+                                <p className="welcomexmessage">
+                                    Welcome to our E-learning :D
+                                </p>
+                            </>
+                        )}
+
                         <form className="loginxform" onSubmit={submitHandler}>
                             <div className="formxcontrol">
-                                <input 
-                                    type="text" 
-                                    placeholder="Username" 
+                                <input
+                                    type="text"
+                                    placeholder="Username"
                                     value={email}
-                                    onChange={(e) => onChange(e.target.value, 'email')}
+                                    onChange={(e) =>
+                                        onChange(e.target.value, "email")
+                                    }
                                     className="input_login"
                                     autoComplete="true"
                                 />
-                                <i className="fa fa-user" ></i>
+                                <i className="fa fa-user"></i>
                             </div>
                             <div className="formxcontrol">
-                                <input 
-                                    type="password" 
-                                    placeholder="Password" 
+                                <input
+                                    type="password"
+                                    placeholder="Password"
                                     value={password}
-                                    onChange={(e) => onChange(e.target.value, 'password')}
+                                    onChange={(e) =>
+                                        onChange(e.target.value, "password")
+                                    }
                                     className="input_login"
                                     autoComplete="true"
                                 />
@@ -207,14 +221,18 @@ export default function LoginScreen(props) {
                             <button className="button submit">Login</button>
 
                             <div className="form_control_links">
-                                <Link to="/" className="comeback" >Regresar</Link>
+                                <Link to="/" className="comeback">
+                                    Regresar
+                                </Link>
                                 |
-                                <Link to="/login-teacher" className="comeback">Soy profesor</Link>
+                                <Link to="/login-teacher" className="comeback">
+                                    Soy profesor
+                                </Link>
                             </div>
                         </form>
                     </div>
                 </section>
             </div>
         </LoginStyled>
-    )
+    );
 }
