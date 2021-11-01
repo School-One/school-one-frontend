@@ -1,6 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap");
 
 .font-general {
-    font-family: 'Inconsolata', monospace !important;
+    font-family: "Inconsolata", monospace !important;
 }
 
+/* Banner of directives */
+.about__card {
+    border-radius: 10px;
+    box-shadow: 0em 0em 2em 0.25em rgb(0 0 0 / 20%);
+    display: flex;
+    min-height: 180px;
+}
+
+.about__cardImage {
+    margin-left: 10px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    max-width: 120px;
+    align-self: center;
+}
+
+.about__cardText {
+    align-self: center;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.about__cardText h2 {
+    color: var(--green-color);
+}
+
+.about__cardText h3 {
+    color: #707070;
+}

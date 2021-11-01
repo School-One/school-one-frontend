@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import jQuery from "jquery";
-import "./Content.module.css";
+import styles from "./Content.module.css";
 
 import HomeImage from "../../../../img/home.svg";
 
@@ -52,25 +52,68 @@ export default function Content() {
     }, []);
 
     return (
-        <div className="row">
-            <div className="col-md-6 text-center">
-                <img
-                    src={HomeImage}
-                    alt="home"
-                    className="inline-photo show-on-scroll"
-                />
+        <>
+            <div className="row">
+                <div className="col-md-6 text-center">
+                    <img
+                        src={HomeImage}
+                        alt="home"
+                        className="inline-photo show-on-scroll"
+                    />
+                </div>
+                <div className="col-md-4 text-center font-general mt-4">
+                    <p className="title__consola show-on-scroll">
+                        Acerca de nosotros
+                    </p>
+                    <p className="about__us show-on-scroll">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Fugiat odit nulla nostrum perferendis molestiae
+                        quaerat ducimus sequi omnis pariatur et quasi,
+                        voluptatum obcaecati nihil quod, quisquam ipsa earum
+                        repudiandae natus?
+                    </p>
+                </div>
             </div>
-            <div className="col-md-4 text-center font-general mt-4">
-                <p className="title__consola show-on-scroll">
-                    Acerca de nosotros
-                </p>
-                <p className="about__us show-on-scroll">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Fugiat odit nulla nostrum perferendis molestiae quaerat
-                    ducimus sequi omnis pariatur et quasi, voluptatum obcaecati
-                    nihil quod, quisquam ipsa earum repudiandae natus?
-                </p>
+            <hr />
+            <h1 className="text-center">Nuestro equipo</h1>
+            <div className="row text-center">
+                <div className="col-md-4">
+                    <div className={styles.about__card}>
+                        <img
+                            src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor1image/1622463604/1.jpg"
+                            className={styles.about__cardImage}
+                        />
+                        <div className={styles.about__cardText}>
+                            <h2>Don C. Beltrán</h2>
+                            <h3>Fundador</h3>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className={styles.about__card}>
+                        <img
+                            src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor2image/1622463604/2.jpg"
+                            className={styles.about__cardImage}
+                        />
+                        <div className={styles.about__cardText}>
+                            <h2>Doña Rosa Delgado</h2>
+                            <h3>Fundadora</h3>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className={styles.about__card}>
+                        <img
+                            src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor3image/1622463604/3.jpg"
+                            className={styles.about__cardImage}
+                        />
+                        <div className={styles.about__cardText}>
+                            <h2>Carlos Beltrán</h2>
+                            <h3>Promotor</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
