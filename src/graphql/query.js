@@ -6,7 +6,22 @@ export const GET_ALL_COURSES = gql`
             id
             name
             grade_section
-            teacher_id
+            teacher{ name }
+        }
+    }
+`;
+
+export const GET_ONE_COURSE = gql`
+    query($courseId: ID!){
+        getCourse(courseId: $courseId){
+            id
+            name
+            grade_section
+            teacher{
+                teacher_id
+                name
+                email
+            }
         }
     }
 `;

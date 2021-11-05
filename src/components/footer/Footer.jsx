@@ -8,7 +8,7 @@ export default function Footer() {
             <div className="container">
                 <div className="row justify-content-evenly">
                     <div className="col-md-3 mt-4 footer-section__card">
-                        <img src={SchoolLogo} className="img-fluid mb-3" />
+                        <img src={SchoolLogo} className="img-fluid mb-3" alt="foto" />
                         <p className="text-white">
                             Sophiano College liderada por un equipo humano de
                             profesionales calificados, idóneos y comprometidos

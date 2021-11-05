@@ -81,14 +81,14 @@ export default function HomeStudent(props) {
             <HomeStyled>
                 <div className="container-fluid mt-3">
                     <div className="row">
-                        <div className="col-md-8 mb-5">
+                        <div className="col-md-10 mb-5">
                             <div className="title">
                                 <h2 className="title_h2">Tablero</h2>
                             </div>
                             <div className="separator mt-3"></div>
                             <div className="row row-cols-1 row-cols-md-3 g-4 mt-2">
 
-                               { loading ? (<LoadingBox />) : error ? (<MessageBox variant="danger">{error}</MessageBox>) : 
+                               { loading ? (<LoadingBox />) : error ? (<MessageBox variant="danger">{error.message}</MessageBox>) : 
                                (   
                                     data && data.getCourses.map(course => (
                                         <div key={course.id} className="col">
@@ -99,7 +99,7 @@ export default function HomeStudent(props) {
                                                         <h5>{course.name}</h5>
                                                     </Link>
                                                     <p className="card_mini">{course.grade_section}</p>
-                                                    <p className="card_teacher"><i className="fas fa-chalkboard-teacher"></i>{course.teacher_id}</p>
+                                                    <p className="card_teacher"><i className="fas fa-chalkboard-teacher" style={{marginRight: '0.5rem'}}></i>{course.teacher.name}</p>
                                                 </div>
                                             </div>
                                         </div>

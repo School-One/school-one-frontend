@@ -8,7 +8,7 @@ import { setContext } from 'apollo-link-context';
 import Typography from './styles/Typography';
 
 const httpLink = createHttpLink({
-    uri: 'http://localhost:5001/'
+    uri: 'http://localhost:5005/'
 });
 
 const authLink = setContext(() => {
