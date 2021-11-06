@@ -18,5 +18,10 @@
         "react"
     ],
     "rules": {
+        "linebreak-style": "off",
+        "import/no-named-as-default": "off",
+        "import/no-named-as-default-member": "off",
+        "react/jsx-filename-extension": "off",
+        "import/named": "off"
     }
 }
