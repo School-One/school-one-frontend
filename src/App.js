@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import { AuthProvider } from './context/auth';
 import AuthRoute from './util/AuthRoute';
 
-//COMPONENTS & SCREENS
 import HomeScreen from './pages/home/HomeScreen';
 import LoginScreen from './pages/login/LoginScreen';
+import LoginTeacherScreen from './pages/teacher/login/LoginTeacherScreen';
 import HomeStudent from './pages/student/home/HomeStudent';
 //import Settings from './pages/student/settings/Settings';
 import StartScreen from './pages/Start/StartScreen';
