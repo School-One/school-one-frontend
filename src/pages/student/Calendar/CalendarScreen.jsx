@@ -1,28 +1,29 @@
-import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import AddEventModal from '../../../components/main/Calendar/AddEventModal';
-import Sidebar from '../../../components/main/sidebar/Sidebar';
+import { useLazyQuery } from "@apollo/react-hooks";
 
-import axios from 'axios';
 import moment from 'moment';
+import StartScreen from '../../Start/StartScreen';
+import { useContext } from 'react/cjs/react.development';
+import { AuthContext } from '../../../context/auth';
+//import { ADD_EVENT } from '../../../graphql/mutation';
+import { GET_EVENTS } from '../../../graphql/query';
 
 Modal.setAppElement('#root');
 
 export default function CalendarScreen(props) {
 
-    const userSignin = useSelector((state) => state.userSignin);
+    const { user } = useContext(AuthContext);
 
-    const { userInfo } = userSignin;
-
-    if(!userInfo) {
+    if(!user){
         props.history.push('/');
     }
 
     const [modalOpen, setModalOpen] = useState(false);
-    const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState();
     const calendarRef = useRef(null);
 
     const onEventAdded = (event) => {
@@ -34,20 +35,20 @@ export default function CalendarScreen(props) {
         });
     }
 
-    const handleEventAdd = async(data) =>{
-        console.log(data.event);
-        await axios.post('http://localhost:4000/api/calendar', data.event);
-    }
+    const [runQuery, { data }] = useLazyQuery(GET_EVENTS);
 
-    const handleDatesSet = async(data) => {
-        const response = await axios.get('http://localhost:4000/api/calendar?start='+moment(data.start).toISOString()+"&end="+moment(data.end).toISOString());
-        setEvents(response.data);
-    }
+    useEffect(() => {
 
-    
+        setEvents(data && data.getEvents);
+
+        console.log(events);
+
+    }, [data, events]);
+
+    //const [ createEvent ] = useMutation(ADD_EVENT);
 
     return (
-        <Sidebar>
+        <StartScreen>
             <div className="container-fluid">
                 <div style={{overflow: 'auto', width:'100%', height: '100vh'}}>
                     <button className="btn btn-primary" onClick={() => setModalOpen(true)} >Add Event</button>
@@ -57,14 +58,24 @@ export default function CalendarScreen(props) {
                             events={events}
                             plugins={[ dayGridPlugin ]}
                             initialView="dayGridMonth"
-                            eventAdd={event => handleEventAdd(event)}
-                            datesSet={(date) => handleDatesSet(date)}
+                            eventAdd={(event) => {
+                                console.log(typeof(event.event._instance.range.start));
+                                console.log(event)
+                            }}
+                            datesSet={async(date) => {
+                                runQuery({
+                                    variables: {
+                                        start: moment(date.startStr).toISOString(),
+                                        end: moment(date.endStr).toISOString()
+                                   }
+                               })
+                           }}
                         />
                     </div>
 
                     <AddEventModal isOpen={modalOpen} onClose={() => setModalOpen(false)} onEventAdded={event => onEventAdded(event)} />
                 </div>
             </div>
-        </Sidebar>
+        </StartScreen>
     )
 }

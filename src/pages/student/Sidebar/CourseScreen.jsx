@@ -1,9 +1,12 @@
 import React from 'react';
+import { GET_ONE_COURSE } from '../../../graphql/query';
+import { useQuery } from '@apollo/react-hooks';
+//SCREENS & COMPONENTS
+import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
 import StartScreen from '../../Start/StartScreen';
 import Sidebar from './Sidebar';
-import { useQuery } from '@apollo/react-hooks';
-import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
-import { GET_ONE_COURSE } from '../../../graphql/query';
+import { Homeworks } from '../../../components/main/sidebar/Homeworks';
+
 import Eclipse from '../../../assets/img/Eclipse_final_3.png';
 
 export default function CourseScreen(props) {
@@ -25,11 +28,9 @@ export default function CourseScreen(props) {
         const {
             id,
             name,
-            grade_section,
+            //grade_section,
             teacher
         } = getCourse;
-
-        console.log(teacher);
 
         courseMarkUp = (
             <StartScreen>
@@ -47,7 +48,7 @@ export default function CourseScreen(props) {
                     </div>
                     <div className="row mt-3">
                         <div className="col-md-8">
-
+                            <Homeworks id={id} />
                         </div>
                         <div className="col-md-4">
                             <div className="col-md-12" style={{backgroundColor: '#E6E6E6', borderRadius: '1rem'}}>

@@ -17,3 +17,18 @@ export const LOGIN_USER = gql`
         }
     }
 `;
+
+export const ADD_EVENT = gql`
+    mutation createEvent($title: String!, $start: Date!, $end: Date!){
+        createEvent(
+            title: $title
+            start: $start
+            end: $end
+        ){
+            id
+            start
+            end
+            title
+        }
+    }
+`

@@ -264,14 +264,14 @@ export default function StartScreen(props) {
                         <span className="tooltop">Cuenta</span>
                     </li>
                     <li>
-                        <Link to="#" className="aa" >
+                        <Link to="/student" className="aa" >
                             <i className='bx bxs-book-content'></i>
                             <span className="links_name">Cursos</span>
                         </Link>
                         <span className="tooltop">Cursos</span>
                     </li>
                     <li>
-                        <Link to="#" className="aa" >
+                        <Link to="/calendar" className="aa" >
                             <i className='bx bxs-calendar' ></i>
                             <span className="links_name">Calendario</span>
                         </Link>

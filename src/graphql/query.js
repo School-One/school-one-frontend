@@ -25,3 +25,40 @@ export const GET_ONE_COURSE = gql`
         }
     }
 `;
+
+export const GET_ALL_HOMEWORKS_PER_STUDENT = gql`
+    query($courseId: ID!, $userId: ID!){
+        getHomeworks(courseId: $courseId, userId: $userId){
+            id
+            curse_id
+            title
+            content
+            answerCount
+        }
+    }
+`;
+
+export const GET_EVENTS = gql`
+    query($start: Date!, $end: Date!){
+        getEvents(start: $start, end: $end) {
+            start
+            end
+            title
+        }
+    }
+`;
+
+export const GET_HOMEWORK = gql`
+    query($courseId: ID!, $homeworkId: ID!){
+        getHomework(courseId: $courseId, homeworkId: $homeworkId){
+            id
+            curse_id
+            title
+            content
+            answers{
+                student_id
+            }
+            answerCount
+        }
+    }
+`;

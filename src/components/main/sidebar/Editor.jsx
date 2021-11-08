@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Todo() {
+export const Editor = () => {
     return (
         <div>
-            
+            a
         </div>
     )
 }
