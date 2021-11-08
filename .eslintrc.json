@@ -23,5 +23,6 @@
         "import/no-named-as-default-member": "off",
         "react/jsx-filename-extension": "off",
         "import/named": "off"
-    }
+    },
+    "ignorePatterns": [".js", ".css", ".jsx"]
 }
