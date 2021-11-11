@@ -9,7 +9,7 @@ import Typography from './styles/Typography';
 import App from './App';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5005/',
+  uri: 'https://school-one-backend.herokuapp.com/',
 });
 
 const authLink = setContext(() => {
