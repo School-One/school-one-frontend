@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../../context/auth';
 import { useMutation } from "@apollo/react-hooks";
 import StartScreen from '../../Start/StartScreen';
 import Sidebar from '../../student/Sidebar/Sidebar';
@@ -10,16 +11,17 @@ import MessageBox from '../../../components/main/messageBox/MessageBox';
 const ManageStyled = styled.div`
 `;
 
-export default function ManageHomeworkScreen() {
+export default function ManageHomeworkScreen(props) {
 
-  const [cursoId, setCursoId] = useState('');
+  const courseId = props.match.params.courseid;
+  const { user } = useContext(AuthContext);
+
   const [titulo, setTitulo] = useState('');
   const [contenido, setContenido] = useState('');
   const [errors, setErrors] = useState(null);
 
   const [ createHomework, {loading} ] = useMutation(CREATE_HOMEWORK, {
     update() {
-        setCursoId('');
         setTitulo('');
         setContenido('');
     },
@@ -31,7 +33,7 @@ export default function ManageHomeworkScreen() {
         );
     },
     variables: {
-        courseId: cursoId,
+        courseId: courseId,
         title: titulo,
         content: contenido
     },
@@ -43,8 +45,8 @@ export default function ManageHomeworkScreen() {
 };
 
   return (
-    <StartScreen>
-      <Sidebar>
+    <StartScreen teacher={user.rol} >
+      <Sidebar teacher={user.rol} course={courseId} >
         <ManageStyled>
           <div className="d-flex justify-content-center">
             <h1 className="fw-bold">Administrar tareas del curso</h1>
@@ -81,16 +83,6 @@ export default function ManageHomeworkScreen() {
                         ) : (
                             null
                     )}
-                  <div className="mb-3">
-                    <label>ID-Curso</label>
-                    <input
-                      type="text"
-                      className="form-control my-3"
-                      placeholder="Ingrese el id del curso"
-                      value={cursoId}
-                      onChange={(e) => setCursoId(e.target.value)}
-                    />
-                  </div>
                   <div className="mb-3">
                     <label>Titulo</label>
                     <input

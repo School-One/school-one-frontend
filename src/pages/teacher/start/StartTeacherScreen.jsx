@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/auth';
-import DefaultPhoto from '../../img/default_photograph.png';
+import { AuthContext } from '../../../context/auth';
+import DefaultPhoto from '../../../img/default_photograph.png';
 
 import styled from 'styled-components';
 
@@ -16,11 +16,6 @@ const SidebarStyled = styled.div`
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
-  }
-  .sidebar_student {
-    background-color: #1b1b55;
-  }
-  .sidebar_teacher {
     background-color: #42a5a4;
   }
   .sidebar.active {
@@ -207,11 +202,6 @@ const SidebarStyled = styled.div`
         border-radius: 12px;
         text-align: center;
         transition: all 0.4s ease;
-      }
-      .log_out_student {
-        background: #333399;
-      }
-      .log_out_teacher {
         background: #2c6c6c;
       }
     }
@@ -254,11 +244,9 @@ export default function StartScreen(props) {
   };
 
   return (
-    <SidebarStyled teacher={user.rol}>
+    <SidebarStyled>
       <div
-        className={`sidebar ${
-          props.teacher === 'Profesor' ? 'sidebar_teacher' : 'sidebar_student'
-        }`}
+        className="sidebar"
       >
         <div className="logo-content">
           <div className="logo">
@@ -276,19 +264,10 @@ export default function StartScreen(props) {
             <span className="tooltop">Cuenta</span>
           </li>
           <li>
-            {
-              props.teacher === 'Profesor' ? (
-                <Link to="/teacher" className="aa">
-                  <i className="bx bxs-book-content"></i>
-                  <span className="links_name">Cursos</span>
-                </Link>
-              ) : (
-                <Link to="/student" className="aa">
-                  <i className="bx bxs-book-content"></i>
-                  <span className="links_name">Cursos</span>
-                </Link>
-              )
-            }
+            <Link to="/student" className="aa">
+              <i className="bx bxs-book-content"></i>
+              <span className="links_name">Cursos</span>
+            </Link>
             <span className="tooltop">Cursos</span>
           </li>
           <li>
@@ -327,9 +306,7 @@ export default function StartScreen(props) {
               </div>
             </div>
             <i
-              className={`bx bx-log-out ${
-                props.teacher ? 'log_out_teacher' : 'log_out_student'
-              }`}
+              className="bx bx-log-out"
               id="log_out"
               onClick={logoutHandle}
             ></i>

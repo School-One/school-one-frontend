@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { AuthContext } from '../../../context/auth';
-import StartScreen from '../../Start/StartScreen';
+import StartScreen from '../start/StartTeacherScreen';
 import styled from 'styled-components';
 import { GET_ALL_COURSES } from '../../../graphql/query';
 import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
@@ -77,7 +77,7 @@ export default function TeacherScreen(props) {
     });
 
     return (
-        <StartScreen teacher={user.rol}>
+        <StartScreen>
             <TeacherStyled>
             <div className="container-fluid mt-3">
                     <div className="row">

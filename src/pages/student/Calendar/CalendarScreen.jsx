@@ -48,7 +48,7 @@ export default function CalendarScreen(props) {
     //const [ createEvent ] = useMutation(ADD_EVENT);
 
     return (
-        <StartScreen>
+        <StartScreen teacher={user.rol}>
             <div className="container-fluid">
                 <div style={{overflow: 'auto', width:'100%', height: '100vh'}}>
                     <button className="btn btn-primary" onClick={() => setModalOpen(true)} >Add Event</button>

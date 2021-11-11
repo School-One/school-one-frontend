@@ -43,7 +43,7 @@ export default function HomeworkScreen(props) {
 
         homeworkMarkup = (
             <StartScreen>
-                <Sidebar>
+                <Sidebar course={courseId}>
                     <div className="row mt-3">
                         <div className="col-md-12">
                             <h1>

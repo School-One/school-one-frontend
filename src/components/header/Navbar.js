@@ -5,7 +5,7 @@ import { AuthContext } from '../../context/auth';
 //CSS
 import './navbar.css';
 
-export default function Navbar() {
+export default function Navbar(props) {
 
   const { user, logout } = useContext(AuthContext);
 
@@ -44,7 +44,6 @@ export default function Navbar() {
               user ? 
               (
                 <>
-                  <li><Link to="/profile" className="a">a</Link></li>
                   <li>
                     <Link to="#signout" className="a" onClick={signoutHandler} >Sign Out</Link>
                   </li>

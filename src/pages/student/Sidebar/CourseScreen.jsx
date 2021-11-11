@@ -41,7 +41,7 @@ export default function CourseScreen(props) {
 
         courseMarkUp = (
             <StartScreen teacher={user.rol}>
-                <Sidebar step={'Home'}>
+                <Sidebar step={'Home'} teacher={user.rol} course={courseId} >
                     <div 
                         style={{background: `url(${process.env.PUBLIC_URL + '/img/mate_wallpaper.jpg'}) no-repeat center`, backgroundSize: 'cover', backgroundAttachment: 'fixed', height: '200px', borderBottom: '5px solid #333399'}}
                     >

@@ -31,7 +31,7 @@ export default function SettingScreen(props) {
     const { id, name, lastname, cellphone, email } = getUser;
 
     SettingMarkup = (
-      <StartScreen>
+      <StartScreen teacher={user.rol}>
         {error ? (
           <MessageBox variant="danger">{error.message}</MessageBox>
         ) : (
