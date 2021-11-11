@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { GET_ANSWERS } from '../graphql/query';
 
-export const useHomework = () => {
+export const useHomework = (homeworkId) => {
     
     const [homeworks, setHomeworks] = useState();
 
@@ -30,7 +30,8 @@ export const useHomework = () => {
 
         runQuery({
              variables: {
-                 page: paginaRef.current
+                 page: paginaRef.current,
+                 homeworkId: homeworkId,
              }
          });
 

@@ -10,7 +10,7 @@ export default function checkScreen(props) {
     const courseId = props.match.params.courseId;
     const homeworkId = props.match.params.homeworkId;
 
-    const { homeworks, paginaAnterior, paginaSiguiente } = useHomework();
+    const { homeworks, paginaAnterior, paginaSiguiente } = useHomework(homeworkId);
 
     return (
         <>

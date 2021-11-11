@@ -89,8 +89,8 @@ export const GET_USER = gql`
 `;
 
 export const GET_ANSWERS = gql`
-    query($page: Int!){
-        getAnswers(page: $page){
+    query($page: Int!, $homeworkId: ID!){
+        getAnswers(page: $page, homeworkId: $homeworkId){
             id
             student_id
             student_answer
