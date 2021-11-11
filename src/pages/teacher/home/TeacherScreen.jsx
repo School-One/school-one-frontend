@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { AuthContext } from '../../../context/auth';
-import StartScreen from '../start/StartTeacherScreen';
+import StartScreen from '../../Start/StartScreen';
 import styled from 'styled-components';
 import { GET_ALL_COURSES } from '../../../graphql/query';
 import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
