@@ -77,7 +77,7 @@ export default function TeacherScreen(props) {
     });
 
     return (
-        <StartScreen>
+        <StartScreen teacher={user.rol}>
             <TeacherStyled>
             <div className="container-fluid mt-3">
                     <div className="row">
