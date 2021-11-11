@@ -15,8 +15,10 @@ import Footer from '../../components/footer/Footer';
 export default function HomeScreen(props) {
     const { user } = useContext(AuthContext);
 
-    if (user) {
+    if (user && user.rol === 'Estudiante') {
         props.history.push('/student');
+    } else if(user && user.rol === 'Profesor'){
+        props.history.push('/teacher');
     }
 
     return (

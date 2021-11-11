@@ -174,7 +174,7 @@ export default function LoginScreen(props) {
 
                 <section className="main">
                     <div className="loginxcontainer">
-                        <p className="title">Bienvenido de vuelta</p>
+                        <p className="title">Sophiano College</p>
                         <div className="separator" />
                         {loading ? (
                             <LoadingBox></LoadingBox>
@@ -185,7 +185,7 @@ export default function LoginScreen(props) {
                         ) : (
                             <>
                                 <p className="welcomexmessage">
-                                    Welcome to our E-learning :D
+                                    Bienvenido profesor!
                                 </p>
                             </>
                         )}

@@ -57,8 +57,44 @@ export const GET_HOMEWORK = gql`
             content
             answers{
                 student_id
+                student_answer
+                submitAt
             }
             answerCount
+        }
+    }
+`;
+
+export const GET_REMINDERS = gql`
+    query($studentId: ID!){
+        getReminders(studentId: $studentId){
+            homework_id
+            course_id
+            title
+            startDate
+        }
+    }
+`;
+
+export const GET_USER = gql`
+    query($userId: ID!){
+        getUser(userId: $userId){
+            id
+            name
+            lastname
+            cellphone
+            email
+        }
+    }
+`;
+
+export const GET_ANSWERS = gql`
+    query($page: Int!){
+        getAnswers(page: $page){
+            id
+            student_id
+            student_answer
+            submitAt
         }
     }
 `;

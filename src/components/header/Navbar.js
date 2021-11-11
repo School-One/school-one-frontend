@@ -53,7 +53,6 @@ export default function Navbar() {
                : (
                 <>
                   <li><Link to="/login" className="a">Login</Link></li>
-                  <li><Link to="/register" className="a">Register</Link></li>
                 </>
               )
             }

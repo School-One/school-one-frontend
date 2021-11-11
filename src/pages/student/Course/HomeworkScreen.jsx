@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StartScreen from '../../Start/StartScreen';
 import Sidebar from '../Sidebar/Sidebar';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_HOMEWORK } from '../../../graphql/query';
 import { Editor } from '../../../components/main/sidebar/Editor';
+import { AuthContext } from '../../../context/auth';
+import ReactHtmlParser from 'react-html-parser';
+
 
 export default function HomeworkScreen(props) {
+
+    const { user } = useContext(AuthContext);
+
+    if(!user){
+        props.history.push('/');
+    }
 
     const courseId = props.match.params.courseid;
     const homeworkId = props.match.params.homeworkid;
@@ -41,18 +50,18 @@ export default function HomeworkScreen(props) {
                             {title}
                             </h1>
                         </div>
-                        <div className="col-md-12 my-3" style={{height: '0.2rem', backgroundColor: '#D6D6D6'}} />
-                        <div className="col-md-12">
+                        <div className="col-md-11 my-4" style={{height: '0.2rem', backgroundColor: '#D6D6D6'}} />
+                        <div className="col-md-11">
                             <p>
                                 {content}
                             </p>
                         </div>
-                        <div className="col-md-12 my-3" style={{height: '0.2rem', backgroundColor: '#D6D6D6'}} />
-                            <Editor />
-                        <div className="col-md-12 my-3" style={{height: '0.2rem', backgroundColor: '#D6D6D6'}} />
+                        <div className="col-md-11 my-4" style={{height: '0.2rem', backgroundColor: '#D6D6D6'}} />
+                            <Editor id={id} courseId={courseId} />
+                        <div className="col-md-11 my-4" style={{height: '0.2rem', backgroundColor: '#D6D6D6'}} />
                         <div className="col-md-12">
                             <h6 className="fw-bold">
-                                Respuestas
+                                Respuestas ({answerCount})
                             </h6>
                         </div>
                     </div>

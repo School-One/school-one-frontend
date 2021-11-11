@@ -19,9 +19,6 @@ export default function Banner() {
                     calidad de estudio online :D
                 </h3>
                 <br />
-                <Link to="#body" className={styles.btn__border}>
-                    About
-                </Link>
             </div>
             <img src={EducationCover} alt="New Sophiano College preview experience"  />
         </>

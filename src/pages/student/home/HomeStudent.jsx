@@ -14,13 +14,14 @@ import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
 import MessageBox from '../../../components/main/messageBox/MessageBox';
 
 import StartScreen from '../../Start/StartScreen';
+import { Reminder } from '../../../components/main/reminder/Reminder';
 
 const HomeStyled = styled.div`
     .title_h2 {
         font-weight: 900;
     }
     .separator {
-        width: 75%;
+        width: 95%;
         height: 3px;
         background: #333399;
     }
@@ -31,16 +32,22 @@ const HomeStyled = styled.div`
         color: #00BFE9;
         font-weight: bold;
         width: 100%;
+        font-size: 14px;
     }
     .Todo_desc {
         font-size: 12px;
         font-weight: bold;
         color: #757575;
+        transition: color 1s;
+    }
+    .Todo_desc:hover {
+        color: black;
     }
     .Todo_fech {
         font-size: 12px;
         font-weight: bold;
-        color: #757575;
+        color: black;
+        margin-top: 0.5rem;
     }
     .icon_right {
         float: right;
@@ -81,9 +88,9 @@ export default function HomeStudent(props) {
             <HomeStyled>
                 <div className="container-fluid mt-3">
                     <div className="row">
-                        <div className="col-md-10 mb-5">
+                        <div className="col-md-9 mb-5">
                             <div className="title">
-                                <h2 className="title_h2">Tablero</h2>
+                                <h2 className="title_h2">Cursos</h2>
                             </div>
                             <div className="separator mt-3"></div>
                             <div className="row row-cols-1 row-cols-md-3 g-4 mt-2">
@@ -96,7 +103,7 @@ export default function HomeStudent(props) {
                                                 <img src={ImageExample} className="card-img-top" alt="..." />
                                                 <div className="card-body">
                                                     <Link to={`course/${course.id}`} className="card-title">
-                                                        <h5>{course.name}</h5>
+                                                        <h6>{course.name}</h6>
                                                     </Link>
                                                     <p className="card_mini">{course.grade_section}</p>
                                                     <p className="card_teacher"><i className="fas fa-chalkboard-teacher" style={{marginRight: '0.5rem'}}></i>{course.teacher.name}</p>
@@ -107,20 +114,12 @@ export default function HomeStudent(props) {
                                )}
                             </div>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-3">
                             <div className="title">
                                 <h2 className="title_h2">Por hacer</h2>
                             </div>
                             <div className="separator mt-3"></div>
-                            <div className="row mt-3">
-                                <p className="Todo_title">Tarea 1 <i className='bx bx-x icon_right' ></i></p>
-                                <p className="Todo_desc">
-                                    Enviar tarea a asignación
-                                </p>
-                                <p className="Todo_fech">
-                                    02/07/2021 18:00
-                                </p>
-                            </div>
+                            <Reminder studentId={user.id} />
                         </div>
                     </div>
                 </div>

@@ -54,8 +54,14 @@ export const Homeworks = ({ id }) => {
                 error ? (<MessageBox variant="danger">{error.message}</MessageBox>) :
                 (
                     <>
-                        <div id="homeworks_title">
-                            Tareas por realizar         
+                        <div id="homeworks_title" className="py-3">
+                            {
+                                user.rol === 'Profesor' ? (
+                                    <h3 className="fw-bold">Tareas del curso</h3>
+                                ) : (
+                                    <h3 className="fw-bold">Tareas por realizar</h3>
+                                )
+                            }       
                         </div>
                         {
                             data && data.getHomeworks.map((homework, index) => (
@@ -65,9 +71,17 @@ export const Homeworks = ({ id }) => {
                                             <h5 className="fw-bold ms-3">{homework.title}</h5>
                                         </div>
                                         <div className="col-md-2 pt-3 pb-3 mx-auto d-flex justify-content-center">
-                                            <Link to={`/course/${id}/assignments/${homework.id}`} id="open_button">
-                                                Abrir
-                                            </Link>
+                                            {
+                                                user.rol === 'Profesor' ? (
+                                                    <Link className="py-1" to={`/check/course/${id}/${homework.id}`} id="open_button">
+                                                        Revisar
+                                                    </Link>
+                                                ) : (
+                                                    <Link to={`/course/${id}/assignments/${homework.id}`} id="open_button">
+                                                        Abrir
+                                                    </Link>
+                                                )
+                                            }
                                         </div>
                                     </div>
                                 </div>

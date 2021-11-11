@@ -72,7 +72,7 @@ export default function LoginScreen(props) {
 
                 <section className={styles.main}>
                     <div className={styles.loginxcontainer}>
-                        <p className={styles.title}>Bienvenido de vuelta</p>
+                        <p className={styles.title}>Sophiano College</p>
                         <div className={styles.separator} />
                         {loading ? (
                             <LoadingBox></LoadingBox>
@@ -83,7 +83,7 @@ export default function LoginScreen(props) {
                         ) : (
                             <>
                                 <p className={styles.welcomexmessage}>
-                                    Welcome to our E-learning :D
+                                    Bienvenido alumno
                                 </p>
                             </>
                         )}
