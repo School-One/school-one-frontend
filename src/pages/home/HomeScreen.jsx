@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../context/auth';
 import { Helmet } from 'react-helmet';
+import { AuthContext } from '../../context/auth';
 
 import styles from './Home.module.css';
 
@@ -13,44 +13,44 @@ import Wave from '../../components/main/svg/Wave';
 import Footer from '../../components/footer/Footer';
 
 export default function HomeScreen(props) {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    if (user && user.rol === 'Estudiante') {
-        props.history.push('/student');
-    } else if(user && user.rol === 'Profesor'){
-        props.history.push('/teacher');
-    }
+  if (user && user.rol === 'Estudiante') {
+    props.history.push('/student');
+  } else if (user && user.rol === 'Profesor') {
+    props.history.push('/teacher');
+  }
 
-    return (
-        <>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Sophiano College - Powered by School One</title>
-                <meta
-                    name="description"
-                    content="Sophiano College liderada por un equipo humano de profesionales calificados, idóneos y comprometidos que propician la formación integral de los educandos."
-                />
-            </Helmet>
-            <header>
-                <Navbar />
-                <LoadingHome />
-            </header>
-            <section className={styles.banner} id="home">
-                <Banner />
-            </section>
+  return (
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sophiano College - Powered by School One</title>
+        <meta
+          name="description"
+          content="Sophiano College liderada por un equipo humano de profesionales calificados, idóneos y comprometidos que propician la formación integral de los educandos."
+        />
+      </Helmet>
+      <header>
+        <Navbar />
+        <LoadingHome />
+      </header>
+      <section className={styles.banner} id="home">
+        <Banner />
+      </section>
 
-            <main>
-                <div className={styles.container}>
-                    <Wave />
-                </div>
-                <div className="container-fluid">
-                    <About />
-                </div>
-            </main>
+      <main>
+        <div className={styles.container}>
+          <Wave />
+        </div>
+        <div className="container-fluid">
+          <About />
+        </div>
+      </main>
 
-            <footer>
-                <Footer />
-            </footer>
-        </>
-    );
+      <footer>
+        <Footer />
+      </footer>
+    </>
+  );
 }

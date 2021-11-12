@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
 import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import AddEventModal from '../../../components/main/Calendar/AddEventModal';
 import { useLazyQuery } from '@apollo/react-hooks';
 
 import moment from 'moment';
-import StartScreen from '../../Start/StartScreen';
 import { useContext } from 'react/cjs/react.development';
+import StartScreen from '../../Start/StartScreen';
+import AddEventModal from '../../../components/main/Calendar/AddEventModal';
 import { AuthContext } from '../../../context/auth';
-//import { ADD_EVENT } from '../../../graphql/mutation';
+// import { ADD_EVENT } from '../../../graphql/mutation';
 import { GET_EVENTS } from '../../../graphql/query';
 
 Modal.setAppElement('#root');
@@ -26,8 +26,8 @@ export default function CalendarScreen(props) {
   const calendarRef = useRef(null);
 
   const onEventAdded = (event) => {
-    let calendarApi = calendarRef.current.getApi();
-    calendarApi.addEvent({
+    const calendarAPI = calendarRef.current.getApi();
+    calendarAPI.addEvent({
       start: moment(event.start).toDate(),
       end: moment(event.end).toDate(),
       title: event.title,
@@ -39,10 +39,9 @@ export default function CalendarScreen(props) {
   useEffect(() => {
     setEvents(data && data.getEvents);
 
-    console.log(events);
   }, [data, events]);
 
-  //const [ createEvent ] = useMutation(ADD_EVENT);
+  // const [ createEvent ] = useMutation(ADD_EVENT);
 
   return (
     <StartScreen teacher={user.rol}>
@@ -63,10 +62,7 @@ export default function CalendarScreen(props) {
               events={events}
               plugins={[dayGridPlugin]}
               initialView="dayGridMonth"
-              eventAdd={(event) => {
-                console.log(typeof event.event._instance.range.start);
-                console.log(event);
-              }}
+              eventAdd={(event) => {}}
               datesSet={async (date) => {
                 runQuery({
                   variables: {
