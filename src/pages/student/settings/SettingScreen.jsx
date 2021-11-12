@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
+import MaterialIcon from 'material-icons-react';
+import { useQuery } from '@apollo/react-hooks';
 import styles from './Settings.module.css';
 import DefaultPhotograph from './default_photograph.png';
-import MaterialIcon from 'material-icons-react';
 import StartScreen from '../../Start/StartScreen';
-import { useQuery } from '@apollo/react-hooks';
 import { GET_USER } from '../../../graphql/query';
 import LoadingBox from '../../../components/main/loadingBox/LoadingBox';
 import MessageBox from '../../../components/main/messageBox/MessageBox';
 import { AuthContext } from '../../../context/auth';
+
 export default function SettingScreen(props) {
   const [photograph, setPhotograph] = useState(DefaultPhotograph);
   const { user } = useContext(AuthContext);
@@ -28,7 +29,9 @@ export default function SettingScreen(props) {
   if (!getUser) {
     SettingMarkup = <LoadingBox />;
   } else {
-    const { id, name, lastname, cellphone, email } = getUser;
+    const {
+      id, name, lastname, cellphone, email
+    } = getUser;
 
     SettingMarkup = (
       <StartScreen teacher={user.rol}>
@@ -53,7 +56,8 @@ export default function SettingScreen(props) {
                     &nbsp;
                     {photograph === DefaultPhotograph
                       ? 'Subir fotografía'
-                      : '¡Listo! Ahora puedes actualizar tu fotografía'}{' '}
+                      : '¡Listo! Ahora puedes actualizar tu fotografía'}
+                    {' '}
                     <input
                       type="file"
                       name=""
@@ -65,11 +69,21 @@ export default function SettingScreen(props) {
                 </div>
                 <div className={styles.SettingsRow}>
                   <div className={styles.SettingsLabel}>Nombre completos</div>
-                  <input type="text" name="" className={styles.SettingsInput} value={name} />
+                  <input
+                    type="text"
+                    name=""
+                    className={styles.SettingsInput}
+                    value={name}
+                  />
                 </div>
                 <div className={styles.SettingsRow}>
                   <div className={styles.SettingsLabel}>Apellido completo</div>
-                  <input type="text" name="" className={styles.SettingsInput} value={lastname} />
+                  <input
+                    type="text"
+                    name=""
+                    className={styles.SettingsInput}
+                    value={lastname}
+                  />
                 </div>
                 <div className={styles.SettingsRow}>
                   <div className={styles.SettingsLabel}>Correo electrónico</div>

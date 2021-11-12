@@ -1,9 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { AuthContext } from '../../context/auth';
 import DefaultPhoto from '../../img/default_photograph.png';
-
-import styled from 'styled-components';
 
 const SidebarStyled = styled.div`
   .sidebar {
@@ -240,8 +239,8 @@ export default function StartScreen(props) {
   const { logout, user } = useContext(AuthContext);
 
   useEffect(() => {
-    let btn = document.querySelector('#btn');
-    let sidebar = document.querySelector('.sidebar');
+    const btn = document.querySelector('#btn');
+    const sidebar = document.querySelector('.sidebar');
 
     btn.onclick = function () {
       sidebar.classList.toggle('active');
@@ -262,52 +261,50 @@ export default function StartScreen(props) {
       >
         <div className="logo-content">
           <div className="logo">
-            <i className="bx bxs-school icon"></i>
+            <i className="bx bxs-school icon" />
             <div className="logo_name">Sophiano</div>
           </div>
-          <i className="bx bx-menu" id="btn"></i>
+          <i className="bx bx-menu" id="btn" />
         </div>
         <ul className="nav_list">
           <li>
             <Link to="/config" className="aa">
-              <i className="bx bx-user"></i>
+              <i className="bx bx-user" />
               <span className="links_name">Cuenta</span>
             </Link>
             <span className="tooltop">Cuenta</span>
           </li>
           <li>
-            {
-              props.teacher === 'Profesor' ? (
-                <Link to="/teacher" className="aa">
-                  <i className="bx bxs-book-content"></i>
-                  <span className="links_name">Cursos</span>
-                </Link>
-              ) : (
-                <Link to="/student" className="aa">
-                  <i className="bx bxs-book-content"></i>
-                  <span className="links_name">Cursos</span>
-                </Link>
-              )
-            }
+            {props.teacher === 'Profesor' ? (
+              <Link to="/teacher" className="aa">
+                <i className="bx bxs-book-content" />
+                <span className="links_name">Cursos</span>
+              </Link>
+            ) : (
+              <Link to="/student" className="aa">
+                <i className="bx bxs-book-content" />
+                <span className="links_name">Cursos</span>
+              </Link>
+            )}
             <span className="tooltop">Cursos</span>
           </li>
           <li>
             <Link to="/calendar" className="aa">
-              <i className="bx bxs-calendar"></i>
+              <i className="bx bxs-calendar" />
               <span className="links_name">Calendario</span>
             </Link>
             <span className="tooltop">Calendario</span>
           </li>
           <li>
             <Link to="#" className="aa">
-              <i className="bx bx-history"></i>
+              <i className="bx bx-history" />
               <span className="links_name">Recordatorio</span>
             </Link>
             <span className="tooltop">Recordatorio</span>
           </li>
           <li>
             <Link to="#" className="aa">
-              <i className="bx bx-help-circle"></i>
+              <i className="bx bx-help-circle" />
               <span className="links_name">Ayuda</span>
             </Link>
             <span className="tooltop">Ayuda</span>
@@ -332,7 +329,7 @@ export default function StartScreen(props) {
               }`}
               id="log_out"
               onClick={logoutHandle}
-            ></i>
+            />
           </div>
         </div>
       </div>

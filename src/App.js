@@ -1,4 +1,3 @@
-/* eslint-disable padded-blocks */
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -30,13 +29,29 @@ function App() {
           <AuthRoute path="/login" component={LoginScreen} exact />
           <Route path="/student" component={HomeStudent} exact />
           <Route path="/course/:courseid" component={CourseScreen} exact />
-          <Route path="/course/:courseid/assignments/:homeworkid" component={HomeworkScreen} exact />
+          <Route
+            path="/course/:courseid/assignments/:homeworkid"
+            component={HomeworkScreen}
+            exact
+          />
           {/* Teacher */}
-          <AuthRouteTeacher path="/login-teacher" component={LoginTeacherScreen} exact />
+          <AuthRouteTeacher
+            path="/login-teacher"
+            component={LoginTeacherScreen}
+            exact
+          />
           <Route path="/teacher" component={TeacherScreen} exact />
-          <Route path="/check/course/:courseId/:homeworkId" component={checkScreen} exact />
+          <Route
+            path="/check/course/:courseId/:homeworkId"
+            component={checkScreen}
+            exact
+          />
           <Route path="/attendance" component={Attendance} exact />
-          <Route path="/manage/:courseid?" component={ManageHomeworkScreen} exact />
+          <Route
+            path="/manage/:courseid?"
+            component={ManageHomeworkScreen}
+            exact
+          />
           {/* GENERAL */}
           <Route path="/config" component={SettingScreen} exact />
           <Route path="/calendar" component={CalendarScreen} exact />
