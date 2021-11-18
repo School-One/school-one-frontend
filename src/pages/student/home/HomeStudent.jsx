@@ -87,7 +87,7 @@ export default function HomeStudent(props) {
       <HomeStyled>
         <div className="container-fluid mt-3">
           <div className="row">
-            <div className="col-md-9 mb-5">
+            <div className="col-md-9 mb-5" id="tablero">
               <div className="title">
                 <h2 className="title_h2">Cursos</h2>
               </div>
@@ -129,7 +129,7 @@ export default function HomeStudent(props) {
                 )}
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3" id="por_hacer">
               <div className="title">
                 <h2 className="title_h2">Por hacer</h2>
               </div>

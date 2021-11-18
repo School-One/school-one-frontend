@@ -1,10 +1,16 @@
+/* eslint-disable import/extensions */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
 import React, { useEffect } from 'react';
 import jQuery from 'jquery';
 import styles from './Content.module.css';
 
+import Team from './components/Team';
+
 import HomeImage from '../../../../img/home.svg';
+
+// eslint-disable-next-line import/no-unresolved
+import Map from './Map';
 
 export default function Content() {
   useEffect(() => {
@@ -60,57 +66,32 @@ export default function Content() {
           />
         </div>
         <div className="col-md-4 text-center font-general mt-4">
-          <p className="title__consola show-on-scroll">Acerca de nosotros</p>
+          <p className="title__consola show-on-scroll">
+            Acerca de nosotros
+          </p>
           <p className="about__us show-on-scroll">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-            odit nulla nostrum perferendis molestiae quaerat ducimus sequi omnis
-            pariatur et quasi, voluptatum obcaecati nihil quod, quisquam ipsa
-            earum repudiandae natus?
+            Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Fugiat odit nulla nostrum perferendis molestiae
+            quaerat ducimus sequi omnis pariatur et quasi,
+            voluptatum obcaecati nihil quod, quisquam ipsa earum
+            repudiandae natus?
           </p>
         </div>
       </div>
       <hr />
       <h1 className="text-center">Nuestro equipo</h1>
       <div className="row text-center">
-        <div className="col-md-4">
-          <div className={styles.about__card}>
-            <img
-              src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor1image/1622463604/1.jpg"
-              className={styles.about__cardImage}
-              alt=""
-            />
-            <div className={styles.about__cardText}>
-              <h2>Don C. Beltrán</h2>
-              <h3>Fundador</h3>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className={styles.about__card}>
-            <img
-              src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor2image/1622463604/2.jpg"
-              className={styles.about__cardImage}
-              alt=""
-            />
-            <div className={styles.about__cardText}>
-              <h2>Doña Rosa Delgado</h2>
-              <h3>Fundadora</h3>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className={styles.about__card}>
-            <img
-              src="https://sophianocollege.com/pluginfile.php/1/theme_school/tutor3image/1622463604/3.jpg"
-              className={styles.about__cardImage}
-              alt=""
-            />
-            <div className={styles.about__cardText}>
-              <h2>Carlos Beltrán</h2>
-              <h3>Promotor</h3>
-            </div>
-          </div>
-        </div>
+        <Team />
+      </div>
+      <hr />
+      <h1 className="text-center">Ubicación</h1>
+      <div>
+        <Map
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          containerElement={<div style={{ height: '400px' }} />}
+          mapElement={<div style={{ height: '100%' }} />}
+          loadingElement={<p>Cargando</p>}
+        />
       </div>
     </>
   );

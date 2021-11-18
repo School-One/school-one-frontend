@@ -1,0 +1,56 @@
+[
+    {
+        "id":1,
+        "nombre":"Don C. Beltran",
+        "cargo":"Fundador",
+        "src": "https://sophianocollege.com/pluginfile.php/1/theme_school/tutor1image/1622463604/1.jpg"
+    },
+    {
+        "id":2,
+        "nombre":"Doña Rosa Delgado",
+        "cargo":"Fundadora",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor2image/1622463604/2.jpg"
+    },
+    {
+        "id":3,
+        "nombre":"Carlos Beltran",
+        "cargo":"Promotor",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor3image/1622463604/3.jpg"
+    },
+    {
+        "id":4,
+        "nombre":"Lucia Torrealva",
+        "cargo":"Directora",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor4image/1622463604/4.jpg"
+    },
+    {
+        "id":5,
+        "nombre":"Jimmy Navarro",
+        "cargo":"Sub Director",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor5image/1622463604/5.jpg"
+    },
+    {
+        "id":6,
+        "nombre":"Luz Saavedra",
+        "cargo":"Licenciada Letras",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor6image/1622463604/6.jpg"
+    },
+    {
+        "id":7,
+        "nombre":"Alexandra Becerra",
+        "cargo":"Coord. Inicial",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor7image/1622463604/7.jpg"
+    },
+    {
+        "id":8,
+        "nombre":"Giovanna Olivares",
+        "cargo":"Coord. Primaria",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor8image/1622463604/8.jpg"
+    },
+    {
+        "id":9,
+        "nombre":"Hector Pereda",
+        "cargo":"Coord. Secundaria",
+        "src":"https://sophianocollege.com/pluginfile.php/1/theme_school/tutor9image/1622463604/9.jpg"
+    }
+]

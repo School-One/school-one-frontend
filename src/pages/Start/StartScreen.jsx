@@ -1,6 +1,8 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+// eslint-disable-next-line import/no-unresolved
+import Tour from 'reactour';
 import { AuthContext } from '../../context/auth';
 import DefaultPhoto from '../../img/default_photograph.png';
 
@@ -234,6 +236,83 @@ const SidebarStyled = styled.div`
     left: 240px;
   }
 `;
+const steps = [
+  {
+    selector: '#sidebar',
+    content: ({ setCurrentStep }) => (
+      <p>
+        Dentro de la barra, se encuentran las
+        opciones principales con las que cuenta
+        el sistema.
+      </p>
+    ),
+    style: {
+        background: '#333399',
+        color: '#ffffff'
+    }
+  },
+    {
+        selector: '#cuenta',
+        content: ({ setCurrentStep }) => (
+          <p>Aqui va la info</p>
+        ),
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        }
+    },
+    {
+        selector: '#cursos',
+        content: 'Aquí se puede visualizar los cursos que tiene el usuario',
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        }
+    },
+    {
+        selector: '#calendario',
+        content: 'Aqui se puede ver a detalle la fecha de entrega de tarea',
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        }
+    },
+    {
+        selector: '#recordatorio',
+        content: 'Aqui se avisa los cursos y tareas asignadas sin terminar',
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        }
+    },
+    {
+        selector: '#tablero',
+        content: 'Acá se puede visualizar todos los cursos que tiene disponible el alumno',
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        },
+
+    },
+    {
+        selector: '#por_hacer',
+        content: 'Aquí se puede ver todos los trabajos que faltan realizar',
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        },
+
+    },
+    {
+        selector: '#log_out',
+        content: 'Este boton sirve cuando quieras salir del sistema',
+        style: {
+            background: '#333399',
+            color: '#ffffff'
+        },
+
+    }
+  ];
 
 export default function StartScreen(props) {
   const { logout, user } = useContext(AuthContext);
@@ -251,9 +330,14 @@ export default function StartScreen(props) {
     logout();
     window.location.replace('/');
   };
-
+  const [isTourOpen, setIsTourOpen] = useState(false);
   return (
     <SidebarStyled teacher={user.rol}>
+      <Tour
+        steps={steps}
+        isOpen={isTourOpen}
+        onRequestClose={() => setIsTourOpen(false)}
+      />
       <div
         className={`sidebar ${
           props.teacher === 'Profesor' ? 'sidebar_teacher' : 'sidebar_student'
@@ -266,9 +350,9 @@ export default function StartScreen(props) {
           </div>
           <i className="bx bx-menu" id="btn" />
         </div>
-        <ul className="nav_list">
+        <ul className="nav_list" id="sidebar">
           <li>
-            <Link to="/config" className="aa">
+            <Link to="/config" className="aa" id="cuenta">
               <i className="bx bx-user" />
               <span className="links_name">Cuenta</span>
             </Link>
@@ -276,12 +360,12 @@ export default function StartScreen(props) {
           </li>
           <li>
             {props.teacher === 'Profesor' ? (
-              <Link to="/teacher" className="aa">
+              <Link to="/teacher" className="aa" id="cursos">
                 <i className="bx bxs-book-content" />
                 <span className="links_name">Cursos</span>
               </Link>
             ) : (
-              <Link to="/student" className="aa">
+              <Link to="/student" className="aa" id="cursos">
                 <i className="bx bxs-book-content" />
                 <span className="links_name">Cursos</span>
               </Link>
@@ -289,21 +373,21 @@ export default function StartScreen(props) {
             <span className="tooltop">Cursos</span>
           </li>
           <li>
-            <Link to="/calendar" className="aa">
+            <Link to="/calendar" className="aa" id="calendario">
               <i className="bx bxs-calendar" />
               <span className="links_name">Calendario</span>
             </Link>
             <span className="tooltop">Calendario</span>
           </li>
           <li>
-            <Link to="#" className="aa">
+            <Link to="#" className="aa" id="recordatorio">
               <i className="bx bx-history" />
               <span className="links_name">Recordatorio</span>
             </Link>
             <span className="tooltop">Recordatorio</span>
           </li>
           <li>
-            <Link to="#" className="aa">
+            <Link onClick={() => setIsTourOpen(true)} to="#" className="aa" id="ayuda">
               <i className="bx bx-help-circle" />
               <span className="links_name">Ayuda</span>
             </Link>
