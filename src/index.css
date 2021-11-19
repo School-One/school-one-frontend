@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&family=Poppins:wght@500;600&display=swap');
 
 * {
   margin: 0;
@@ -11,12 +11,34 @@ html {
 }
 
 body {
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Inter', sans-serif;
 }
 
 :root {
   --blue-color: #333399;
   --green-color: #589b7c;
+}
+
+.blue-color-font {
+  color: var(--blue-color);
+}
+
+.green-color-font {
+  color: var(--green-color);
+}
+
+h1,
+h2,
+h3,
+.poppins-font {
+  font-family: 'Poppins Bold';
+  font-weight: 600;
+}
+
+h4,
+.poppins-font {
+  font-family: 'Poppins';
+  font-weight: 500;
 }
 
 .alert {
