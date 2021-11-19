@@ -58,6 +58,8 @@ export default function Content() {
   return (
     <>
       <div className="row">
+        {/* TODO: Escribir descripción de la nueva plataforma Sophiano College */}
+        {/*
         <div className="col-md-6 text-center">
           <img
             src={HomeImage}
@@ -65,7 +67,7 @@ export default function Content() {
             className="inline-photo show-on-scroll"
           />
         </div>
-        <div className="col-md-4 text-center font-general mt-4">
+         <div className="col-md-4 text-center font-general mt-4">
           <p className="title__consola show-on-scroll">
             Acerca de nosotros
           </p>
@@ -76,11 +78,11 @@ export default function Content() {
             voluptatum obcaecati nihil quod, quisquam ipsa earum
             repudiandae natus?
           </p>
-        </div>
+        </div> */}
       </div>
       <hr />
       <h1 className="text-center">Nuestro equipo</h1>
-      <div className="row text-center">
+      <div className="row text-center mx-5">
         <Team />
       </div>
       <hr />
