@@ -45,7 +45,7 @@ const LoginStyled = styled.div`
   .separator {
     width: 150px;
     height: 4px;
-    background-color: #843bc7;
+    background-color: #333399;
     margin: 24px;
   }
 
@@ -186,7 +186,7 @@ export default function LoginScreen(props) {
               <MessageBox variant="danger">{errors.general}</MessageBox>
             ) : (
               <>
-                <p className="welcomexmessage">Bienvenido profesor!</p>
+                <p className="welcomexmessage">Bienvenido docente</p>
               </>
             )}
 
@@ -194,7 +194,7 @@ export default function LoginScreen(props) {
               <div className="formxcontrol">
                 <input
                   type="text"
-                  placeholder="Username"
+                  placeholder="Usuario"
                   value={email}
                   onChange={(e) => onChange(e.target.value, 'email')}
                   className="input_login"
@@ -205,7 +205,7 @@ export default function LoginScreen(props) {
               <div className="formxcontrol">
                 <input
                   type="password"
-                  placeholder="Password"
+                  placeholder="Contraseña"
                   value={password}
                   onChange={(e) => onChange(e.target.value, 'password')}
                   className="input_login"
