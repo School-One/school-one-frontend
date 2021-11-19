@@ -16,6 +16,33 @@ import MessageBox from '../../../components/main/messageBox/MessageBox';
 import StartScreen from '../../Start/StartScreen';
 import { Reminder } from '../../../components/main/reminder/Reminder';
 
+const HomeStudentCard = ({
+  courseId,
+  image,
+  courseName,
+  courseGradeSection,
+  courseTeacherName,
+}) => (
+  <div key={courseId} className="col">
+    <div className="card c-bottom">
+      <img src={image} className="card-img-top" alt={courseName} />
+      <div className="card-body">
+        <Link to={`course/${courseId}`} className="card-title blue-color-font">
+          <h4>{courseName}</h4>
+        </Link>
+        <p className="card_mini">{courseGradeSection}</p>
+        <p className="card_teacher">
+          <i
+            className="fas fa-chalkboard-teacher"
+            style={{ marginRight: '0.5rem' }}
+          />
+          {courseTeacherName}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const HomeStyled = styled.div`
   .title_h2 {
     font-weight: 900;
@@ -26,10 +53,16 @@ const HomeStyled = styled.div`
     background: #333399;
   }
   .c-bottom {
-    box-shadow: 0 4px 2px -2px gray;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition-property: transform;
+    transition-timing-function: ease;
+    transition-duration: 300ms;
+  }
+  .c-bottom:hover {
+    transform: scale(1.04);
   }
   .Todo_title {
-    color: #00bfe9;
+    color: #333399;
     font-weight: bold;
     width: 100%;
     font-size: 14px;
@@ -85,9 +118,9 @@ export default function HomeStudent(props) {
   return (
     <StartScreen>
       <HomeStyled>
-        <div className="container-fluid mt-3">
+        <div className="container-fluid mt-3 ml-3">
           <div className="row">
-            <div className="col-md-9 mb-5" id="tablero">
+            <div className="col-md-9 mb-5 px-4" id="tablero">
               <div className="title">
                 <h2 className="title_h2">Cursos</h2>
               </div>
@@ -100,31 +133,13 @@ export default function HomeStudent(props) {
                 ) : (
                   data
                   && data.getCourses.map((course) => (
-                    <div key={course.id} className="col">
-                      <div className="card c-bottom">
-                        <img
-                          src={ImageExample}
-                          className="card-img-top"
-                          alt="..."
-                        />
-                        <div className="card-body">
-                          <Link
-                            to={`course/${course.id}`}
-                            className="card-title"
-                          >
-                            <h6>{course.name}</h6>
-                          </Link>
-                          <p className="card_mini">{course.grade_section}</p>
-                          <p className="card_teacher">
-                            <i
-                              className="fas fa-chalkboard-teacher"
-                              style={{ marginRight: '0.5rem' }}
-                            />
-                            {course.teacher.name}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    <HomeStudentCard
+                      courseId={course.id}
+                      image={ImageExample}
+                      courseName={course.name}
+                      courseGradeSection={course.grade_section}
+                      courseTeacherName={course.teacher.name}
+                    />
                   ))
                 )}
               </div>
