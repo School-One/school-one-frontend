@@ -42,7 +42,7 @@ export default function SettingScreen(props) {
             <div className={styles.Settings}>
               <div className={styles.SettingsContainer}>
                 <h1 className={styles.SettingsTitle}>
-                  Configuración de usuario
+                  Configuración de cuenta
                 </h1>
                 <div className={styles.SettingsPhotographRow}>
                   <img
@@ -52,7 +52,7 @@ export default function SettingScreen(props) {
                   />
                   <br />
                   <span className={styles.SettingsFileButton}>
-                    <MaterialIcon icon="upload" color="#843bc7" />
+                    <MaterialIcon icon="upload" color="#333399" />
                     &nbsp;
                     {photograph === DefaultPhotograph
                       ? 'Subir fotografía'
