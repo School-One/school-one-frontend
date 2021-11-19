@@ -41,6 +41,13 @@
     "no-use-before-define": "off",
     "no-plusplus": "off",
     "react/no-array-index-key": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-undef": "off"
+  },
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true
   }
 }

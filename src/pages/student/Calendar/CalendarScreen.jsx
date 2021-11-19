@@ -12,7 +12,9 @@ import { AuthContext } from '../../../context/auth';
 // import { ADD_EVENT } from '../../../graphql/mutation';
 import { GET_EVENTS } from '../../../graphql/query';
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') {
+  Modal.setAppElement('#root');
+}
 
 export default function CalendarScreen(props) {
   const { user } = useContext(AuthContext);
