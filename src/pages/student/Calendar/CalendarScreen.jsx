@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Modal from 'react-modal';
-import FullCalendar from '@fullcalendar/react'; // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import esLocale from '@fullcalendar/core/locales/es';
 import { useLazyQuery } from '@apollo/react-hooks';
 
 import moment from 'moment';
@@ -53,7 +54,7 @@ export default function CalendarScreen(props) {
             className="btn btn-primary"
             onClick={() => setModalOpen(true)}
           >
-            Add Event
+            Agendar evento
           </button>
           <div
             className="table-responsive"
@@ -63,6 +64,7 @@ export default function CalendarScreen(props) {
               ref={calendarRef}
               events={events}
               plugins={[dayGridPlugin]}
+              locale={esLocale}
               initialView="dayGridMonth"
               eventAdd={(event) => {}}
               datesSet={async (date) => {

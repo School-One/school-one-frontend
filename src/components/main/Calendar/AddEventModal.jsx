@@ -76,11 +76,11 @@ export default function AddEventModal({ isOpen, onClose, onEventAdded }) {
     <Modal isOpen={isOpen} onRequestClose={onClose} style={customStyles}>
       <form onSubmit={onSubmit}>
         <div className="mb-5">
-          <h2 className="text-center">Añadir evento</h2>
+          <h2 className="text-center">Nuevo evento</h2>
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Titulo del evento</label>
+          <label className="form-label">Título del evento</label>
           <input
             type="text"
             className="form-control"
@@ -98,7 +98,7 @@ export default function AddEventModal({ isOpen, onClose, onEventAdded }) {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Start Date</label>
+          <label className="form-label">Fecha de inicio</label>
           <Datetime value={start} onChange={(date) => setStart(date)} />
           {errorStart ? (
             <div
@@ -111,7 +111,7 @@ export default function AddEventModal({ isOpen, onClose, onEventAdded }) {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">End Date</label>
+          <label className="form-label">Fecha de finalización</label>
           <Datetime value={end} onChange={(dateEnd) => setEnd(dateEnd)} />
           {errorEnd ? (
             <div
@@ -123,7 +123,7 @@ export default function AddEventModal({ isOpen, onClose, onEventAdded }) {
           ) : null}
         </div>
 
-        <button className="btn btn-outline-primary">Add event</button>
+        <button className="btn btn-outline-primary">Agendar evento</button>
       </form>
     </Modal>
   );
