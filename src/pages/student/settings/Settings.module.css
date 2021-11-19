@@ -1,11 +1,9 @@
 .SettingsContainer {
-  background-color: whitesmoke;
   padding: 25px;
   margin: 20px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
 }
 
@@ -25,13 +23,13 @@
 }
 
 .SettingsTitle {
-  color: #843bc7;
+  color: var(--blue-color);
   margin-bottom: 30px;
   align-self: center;
 }
 
 .SettingsLabel {
-  background-color: #843bc7;
+  background-color: var(--blue-color);
   font-size: 1.2rem;
   color: white;
   font-size: 1.1em;
@@ -47,12 +45,12 @@
   border-radius: 0px 30px 30px 0px;
   font-size: 1.1em;
   padding: 10px;
-  border: 2px solid #a14af3;
+  border: 2px solid var(--blue-color);
   width: 40%;
 }
 
 .SettingsInput:focus {
-  border: 2px solid #843bc7;
+  border: 2px solid var(--blue-color);
 }
 
 .SettingsPhotograph {
@@ -60,13 +58,13 @@
   height: 150px;
   width: 150px;
   cursor: pointer;
-  border: 2px solid #843bc7;
+  border: 2px solid var(--blue-color);
 }
 
 .SettingsFileButton {
   position: relative;
   overflow: hidden;
-  border: 2px solid #843bc7;
+  border: 2px solid var(--blue-color);
   padding: 8px 16px;
   border-radius: 30px;
   display: flex !important;
@@ -77,7 +75,7 @@
 }
 
 .SettingsFileButton:hover {
-  background-color: #843bc7;
+  background-color: var(--blue-color);
   color: white;
 }
 
@@ -103,21 +101,27 @@
 }
 
 .SettingsUpdateButton {
-  display: flex;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-size: 1.2rem;
-  font-weight: lighter;
-  transition-property: all;
-  transition-timing-function: ease;
-  transition-duration: 300ms;
-  background-color: #843bc7;
   border: none;
-  margin-top: 20px;
-  align-self: center;
+  outline: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  color: #fff;
+  padding: 14px 64px;
+  margin: 32px auto;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to right,
+    var(--green-color),
+    var(--blue-color)
+  );
+  cursor: pointer;
+  transition: opacity 0.4s;
+  justify-content: center;
+  display: flex;
 }
 
 .SettingsUpdateButton:hover {
-  background-color: #5f2a90;
+  background-color: var(--blue-color);
 }
