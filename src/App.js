@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import { AuthProvider } from './context/auth';
 import AuthRoute from './util/AuthRoute';
@@ -7,7 +7,6 @@ import AuthRoute from './util/AuthRoute';
 import HomeScreen from './pages/home/HomeScreen';
 import LoginScreen from './pages/login/LoginScreen';
 import HomeStudent from './pages/student/home/HomeStudent';
-// import Settings from './pages/student/settings/Settings';
 import TeacherScreen from './pages/teacher/home/TeacherScreen';
 import CourseScreen from './pages/student/Sidebar/CourseScreen';
 import CalendarScreen from './pages/student/Calendar/CalendarScreen';
@@ -22,7 +21,7 @@ import ManageHomeworkScreen from './pages/teacher/homework/ManageHomeworkScreen'
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <BrowserRouter>
         <>
           <Route path="/" component={HomeScreen} exact />
           {/* Student */}
@@ -56,7 +55,7 @@ function App() {
           <Route path="/config" component={SettingScreen} exact />
           <Route path="/calendar" component={CalendarScreen} exact />
         </>
-      </Router>
+      </BrowserRouter>
     </AuthProvider>
   );
 }
