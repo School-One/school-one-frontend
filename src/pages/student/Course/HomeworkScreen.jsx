@@ -27,7 +27,7 @@ export default function HomeworkScreen(props) {
   let homeworkMarkup;
 
   if (!getHomework) {
-    homeworkMarkup = <p>Loading...</p>;
+    homeworkMarkup = <p>Cargando...</p>;
   } else {
     const {
       id, curse_id, title, content, answers, answerCount
