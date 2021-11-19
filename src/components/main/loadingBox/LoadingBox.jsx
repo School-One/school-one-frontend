@@ -6,7 +6,7 @@ export default function LoadingBox() {
     <div className={styles.loading}>
       <i className="fa fa-spinner fa-spin" />
       {' '}
-      Loading...
+      Cargando...
     </div>
   );
 }
