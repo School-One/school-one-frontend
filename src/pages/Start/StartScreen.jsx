@@ -1,8 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-// eslint-disable-next-line import/no-unresolved
 import Tour from 'reactour';
+import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../context/auth';
 import DefaultPhoto from '../../img/default_photograph.png';
 
@@ -241,78 +241,73 @@ const steps = [
     selector: '#sidebar',
     content: ({ setCurrentStep }) => (
       <p>
-        Dentro de la barra, se encuentran las
-        opciones principales con las que cuenta
-        el sistema.
+        Dentro de la barra, se encuentran las opciones principales con las que
+        cuenta el sistema.
       </p>
     ),
     style: {
-        background: '#333399',
-        color: '#ffffff'
-    }
+      background: '#333399',
+      color: '#ffffff',
+    },
   },
-    {
-        selector: '#cuenta',
-        content: ({ setCurrentStep }) => (
-          <p>Aqui va la info</p>
-        ),
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        }
+  {
+    selector: '#cuenta',
+    content: ({ setCurrentStep }) => <p>Aqui va la info</p>,
+    style: {
+      background: '#333399',
+      color: '#ffffff',
     },
-    {
-        selector: '#cursos',
-        content: 'Aquí se puede visualizar los cursos que tiene el usuario',
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        }
+  },
+  {
+    selector: '#cursos',
+    content: 'Aquí se puede visualizar los cursos que tiene el usuario',
+    style: {
+      background: '#333399',
+      color: '#ffffff',
     },
-    {
-        selector: '#calendario',
-        content: 'Aqui se puede ver a detalle la fecha de entrega de tarea',
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        }
+  },
+  {
+    selector: '#calendario',
+    content: 'Aqui se puede ver a detalle la fecha de entrega de tarea',
+    style: {
+      background: '#333399',
+      color: '#ffffff',
     },
-    {
-        selector: '#recordatorio',
-        content: 'Aqui se avisa los cursos y tareas asignadas sin terminar',
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        }
+  },
+  {
+    selector: '#recordatorio',
+    content: 'Aqui se avisa los cursos y tareas asignadas sin terminar',
+    style: {
+      background: '#333399',
+      color: '#ffffff',
     },
-    {
-        selector: '#tablero',
-        content: 'Acá se puede visualizar todos los cursos que tiene disponible el alumno',
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        },
-
+  },
+  {
+    selector: '#tablero',
+    content:
+      'Acá se puede visualizar todos los cursos que tiene disponible el alumno',
+    style: {
+      background: '#333399',
+      color: '#ffffff',
     },
-    {
-        selector: '#por_hacer',
-        content: 'Aquí se puede ver todos los trabajos que faltan realizar',
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        },
-
+  },
+  {
+    selector: '#por_hacer',
+    content: 'Aquí se puede ver todos los trabajos que faltan realizar',
+    style: {
+      background: '#333399',
+      color: '#ffffff',
     },
-    {
-        selector: '#log_out',
-        content: 'Este boton sirve cuando quieras salir del sistema',
-        style: {
-            background: '#333399',
-            color: '#ffffff'
-        },
-
-    }
-  ];
+  },
+  {
+    selector: '#log_out',
+    content: 'Este boton sirve cuando quieras salir del sistema',
+    style: {
+      background: '#333399',
+      color: '#ffffff',
+    },
+  },
+];
 
 export default function StartScreen(props) {
   const { logout, user } = useContext(AuthContext);
@@ -332,92 +327,102 @@ export default function StartScreen(props) {
   };
   const [isTourOpen, setIsTourOpen] = useState(false);
   return (
-    <SidebarStyled teacher={user.rol}>
-      <Tour
-        steps={steps}
-        isOpen={isTourOpen}
-        onRequestClose={() => setIsTourOpen(false)}
-      />
-      <div
-        className={`sidebar ${
-          props.teacher === 'Profesor' ? 'sidebar_teacher' : 'sidebar_student'
-        }`}
-      >
-        <div className="logo-content">
-          <div className="logo">
-            <i className="bx bxs-school icon" />
-            <div className="logo_name">Sophiano</div>
-          </div>
-          <i className="bx bx-menu" id="btn" />
-        </div>
-        <ul className="nav_list" id="sidebar">
-          <li>
-            <Link to="/config" className="aa" id="cuenta">
-              <i className="bx bx-user" />
-              <span className="links_name">Cuenta</span>
-            </Link>
-            <span className="tooltop">Cuenta</span>
-          </li>
-          <li>
-            {props.teacher === 'Profesor' ? (
-              <Link to="/teacher" className="aa" id="cursos">
-                <i className="bx bxs-book-content" />
-                <span className="links_name">Cursos</span>
-              </Link>
-            ) : (
-              <Link to="/student" className="aa" id="cursos">
-                <i className="bx bxs-book-content" />
-                <span className="links_name">Cursos</span>
-              </Link>
-            )}
-            <span className="tooltop">Cursos</span>
-          </li>
-          <li>
-            <Link to="/calendar" className="aa" id="calendario">
-              <i className="bx bxs-calendar" />
-              <span className="links_name">Calendario</span>
-            </Link>
-            <span className="tooltop">Calendario</span>
-          </li>
-          <li>
-            <Link to="#" className="aa" id="recordatorio">
-              <i className="bx bx-history" />
-              <span className="links_name">Recordatorio</span>
-            </Link>
-            <span className="tooltop">Recordatorio</span>
-          </li>
-          <li>
-            <Link onClick={() => setIsTourOpen(true)} to="#" className="aa" id="ayuda">
-              <i className="bx bx-help-circle" />
-              <span className="links_name">Ayuda</span>
-            </Link>
-            <span className="tooltop">Ayuda</span>
-          </li>
-        </ul>
-        <div className="profile_content">
-          <div
-            className={`profile ${
-              props.teacher ? 'profile_teacher' : 'profile_student'
-            }`}
-          >
-            <div className="profile_details">
-              <img src={DefaultPhoto} alt="img" />
-              <div className="name_user">
-                <div className="name">{user.name}</div>
-                <div className="surname">{user.lastname}</div>
-              </div>
+    <>
+      <Helmet>
+        <title>Panel de Sophiano College</title>
+      </Helmet>
+      <SidebarStyled teacher={user.rol}>
+        <Tour
+          steps={steps}
+          isOpen={isTourOpen}
+          onRequestClose={() => setIsTourOpen(false)}
+        />
+        <div
+          className={`sidebar ${
+            props.teacher === 'Profesor' ? 'sidebar_teacher' : 'sidebar_student'
+          }`}
+        >
+          <div className="logo-content">
+            <div className="logo">
+              <i className="bx bxs-school icon" />
+              <div className="logo_name">Sophiano</div>
             </div>
-            <i
-              className={`bx bx-log-out ${
-                props.teacher ? 'log_out_teacher' : 'log_out_student'
+            <i className="bx bx-menu" id="btn" />
+          </div>
+          <ul className="nav_list" id="sidebar">
+            <li>
+              <Link to="/config" className="aa" id="cuenta">
+                <i className="bx bx-user" />
+                <span className="links_name">Cuenta</span>
+              </Link>
+              <span className="tooltop">Cuenta</span>
+            </li>
+            <li>
+              {props.teacher === 'Profesor' ? (
+                <Link to="/teacher" className="aa" id="cursos">
+                  <i className="bx bxs-book-content" />
+                  <span className="links_name">Cursos</span>
+                </Link>
+              ) : (
+                <Link to="/student" className="aa" id="cursos">
+                  <i className="bx bxs-book-content" />
+                  <span className="links_name">Cursos</span>
+                </Link>
+              )}
+              <span className="tooltop">Cursos</span>
+            </li>
+            <li>
+              <Link to="/calendar" className="aa" id="calendario">
+                <i className="bx bxs-calendar" />
+                <span className="links_name">Calendario</span>
+              </Link>
+              <span className="tooltop">Calendario</span>
+            </li>
+            <li>
+              <Link to="#" className="aa" id="recordatorio">
+                <i className="bx bx-history" />
+                <span className="links_name">Recordatorio</span>
+              </Link>
+              <span className="tooltop">Recordatorio</span>
+            </li>
+            <li>
+              <Link
+                onClick={() => setIsTourOpen(true)}
+                to="#"
+                className="aa"
+                id="ayuda"
+              >
+                <i className="bx bx-help-circle" />
+                <span className="links_name">Ayuda</span>
+              </Link>
+              <span className="tooltop">Ayuda</span>
+            </li>
+          </ul>
+          <div className="profile_content">
+            <div
+              className={`profile ${
+                props.teacher ? 'profile_teacher' : 'profile_student'
               }`}
-              id="log_out"
-              onClick={logoutHandle}
-            />
+            >
+              <div className="profile_details">
+                <img src={DefaultPhoto} alt="img" />
+                <div className="name_user">
+                  <div className="name">{user.name}</div>
+                  <div className="surname">{user.lastname}</div>
+                </div>
+              </div>
+              <i
+                className={`bx bx-log-out ${
+                  props.teacher ? 'log_out_teacher' : 'log_out_student'
+                }`}
+                id="log_out"
+                onClick={logoutHandle}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="home_content">{props.children}</div>
-    </SidebarStyled>
+        <div className="home_content">{props.children}</div>
+      </SidebarStyled>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 import { useMutation } from '@apollo/react-hooks';
 import { useForm } from '../../hooks/useForm';
 import { LOGIN_USER } from '../../graphql/mutation';
@@ -61,6 +62,9 @@ export default function LoginScreen(props) {
 
   return (
     <LoginStyled>
+      <Helmet>
+        <title>Iniciar sesión</title>
+      </Helmet>
       <div className={styles.bodyLogin}>
         <section className={styles.side}>
           <img src={CollaborationImage} alt="a" className={styles.sideimage} />
