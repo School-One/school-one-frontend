@@ -14,9 +14,9 @@ export default function Banner() {
           <span className={styles.textxwhite}>Sophiano College</span>
         </h2>
         <br />
-        <h3>
-          Sitio web donde podras proveer a tus estudiantes una mejor calidad de
-          estudio online :D
+        <h3>Una plataforma de revisión de tareas.</h3>
+        <h3 style={{ fontSize: '1.6rem', backgroundColor: '#00000050' }}>
+          <i>Moderna, más rápida, más segura, y simple de usar.</i>
         </h3>
         <br />
       </div>
