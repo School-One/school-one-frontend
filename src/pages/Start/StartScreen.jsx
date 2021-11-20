@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useHotkeys } from 'react-hotkeys-hook';
 import styled from 'styled-components';
 import Tour from 'reactour';
 import { Helmet } from 'react-helmet';
@@ -326,6 +327,26 @@ export default function StartScreen(props) {
     window.location.replace('/');
   };
   const [isTourOpen, setIsTourOpen] = useState(false);
+
+  const history = useHistory();
+
+  useHotkeys('C', () => {
+    history.push('/');
+  });
+
+  useHotkeys('D', () => {
+    history.push('/calendar');
+  });
+
+  useHotkeys('U', () => {
+    history.push('/config');
+  });
+
+  useHotkeys('ctrl+i', () => {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+  });
+
   return (
     <>
       <Helmet>
