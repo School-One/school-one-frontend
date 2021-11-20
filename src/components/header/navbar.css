@@ -74,10 +74,9 @@ header.sticky .logo {
 header .logo {
   color: #fff;
   font-size: 35px;
-  text-transform: uppercase;
   text-decoration: none;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: -1px;
   font-family: 'Inter', monospace !important;
   transition: color 0.3s;
 }
