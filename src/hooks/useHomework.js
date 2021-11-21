@@ -4,26 +4,14 @@ import { GET_ANSWERS } from '../graphql/query';
 
 export const useHomework = (homeworkId) => {
   const [homeworks, setHomeworks] = useState();
-
   const paginaRef = useRef(1);
-
   const [runQuery, { data }] = useLazyQuery(GET_ANSWERS);
 
   useEffect(() => {
-    cargarTareas();
-    // runQuery({
-    //     variables: {
-    //         page: paginaRef.current
-    //     }
-    // });
-
-    // if(data){
-    //     console.log(data.getAnswers);
-    //     setHomeworks(data.getAnswers)
-    // }
+    loadHomeworks();
   }, [data, paginaRef]);
 
-  const cargarTareas = async () => {
+  const loadHomeworks = async () => {
     runQuery({
       variables: {
         page: paginaRef.current,
@@ -40,21 +28,21 @@ export const useHomework = (homeworkId) => {
     }
   };
 
-  const paginaSiguiente = () => {
+  const nextPage = () => {
     paginaRef.current++;
-    cargarTareas();
+    loadHomeworks();
   };
 
-  const paginaAnterior = () => {
+  const previousPage = () => {
     if (paginaRef.current > 1) {
       paginaRef.current--;
-      cargarTareas();
+      loadHomeworks();
     }
   };
 
   return {
     homeworks,
-    paginaAnterior,
-    paginaSiguiente,
+    paginaAnterior: previousPage,
+    paginaSiguiente: nextPage,
   };
 };
