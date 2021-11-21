@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-export const useForm = (formulario) => {
-  const [state, setState] = useState(formulario);
+export const useForm = (form) => {
+  const [state, setState] = useState(form);
 
-  const onChange = (value, campo) => {
+  const onChange = (value, field) => {
     setState({
       ...state,
-      [campo]: value,
+      [field]: value,
     });
   };
 
