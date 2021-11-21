@@ -11,11 +11,11 @@ export default function Banner() {
         <h2>
           Bienvenidos a
           <br />
-          <span className={styles.textxwhite}>Sophiano College</span>
+          <span className="text-white">Sophiano College</span>
         </h2>
         <br />
         <h3>Una plataforma de revisión de tareas.</h3>
-        <h3 style={{ fontSize: '1.6rem', backgroundColor: '#00000050' }}>
+        <h3>
           <i>Moderna, más rápida, más segura, y simple de usar.</i>
         </h3>
         <br />
