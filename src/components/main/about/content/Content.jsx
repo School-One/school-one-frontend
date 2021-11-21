@@ -9,7 +9,6 @@ import Team from './components/Team';
 
 import HomeImage from '../../../../img/home.svg';
 
-// eslint-disable-next-line import/no-unresolved
 import Map from './Map';
 
 export default function Content() {
