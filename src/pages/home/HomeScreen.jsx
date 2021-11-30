@@ -1,16 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../context/auth';
 
 import styles from './Home.module.css';
 
-import Navbar from '../../components/header/Navbar';
-
-import Banner from '../../components/header/banner/Banner';
-import LoadingHome from '../../components/main/loadingHome/LoadingHome';
-import About from '../../components/main/about/About';
-import Wave from '../../components/main/svg/Wave';
-import Footer from '../../components/footer/Footer';
+const Navbar = lazy(() => import('../../components/header/Navbar'));
+const Banner = lazy(() => import('../../components/header/banner/Banner'));
+const LoadingHome = lazy(() => import('../../components/main/loadingHome/LoadingHome'));
+const About = lazy(() => import('../../components/main/about/About'));
+const Wave = lazy(() => import('../../components/main/svg/Wave'));
+const Footer = lazy(() => import('../../components/footer/Footer'));
 
 export default function HomeScreen(props) {
   const { user } = useContext(AuthContext);
@@ -31,26 +30,27 @@ export default function HomeScreen(props) {
           content="Sophiano College liderada por un equipo humano de profesionales calificados, idóneos y comprometidos que propician la formación integral de los educandos."
         />
       </Helmet>
-      <header>
-        <Navbar />
-        <LoadingHome />
-      </header>
-      <section className={styles.banner} id="home">
-        <Banner />
-      </section>
+      <Suspense fallback={null}>
+        <header>
+          <Navbar />
+          <LoadingHome />
+        </header>
+        <section className={styles.banner} id="home">
+          <Banner />
+        </section>
+        <main>
+          <div className={styles.container}>
+            <Wave />
+          </div>
+          <div className="container-fluid">
+            <About />
+          </div>
+        </main>
 
-      <main>
-        <div className={styles.container}>
-          <Wave />
-        </div>
-        <div className="container-fluid">
-          <About />
-        </div>
-      </main>
-
-      <footer>
-        <Footer />
-      </footer>
+        <footer>
+          <Footer />
+        </footer>
+      </Suspense>
     </>
   );
 }
